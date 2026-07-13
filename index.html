@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="it">
+<html lang="it" class="no-js">
   <head>
+    <!-- Meta, SEO e risorse esterne -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Psicologa a Cremona e online | Saba Fiorentini</title>
@@ -9,15 +10,26 @@
       content="Saba Fiorentini, psicologa (OPL Lombardia n. 32345). Percorsi di sostegno psicologico online e per chi cerca una psicologa a Cremona: adolescenti, giovani adulti, adulti e coppie."
     />
     <link rel="canonical" href="https://www.sabafiorentinipsicologa.it/" />
+    <link rel="sitemap" type="application/xml" href="https://www.sabafiorentinipsicologa.it/sitemap.xml" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Saba Fiorentini — Psicologa" />
+    <meta property="og:url" content="https://www.sabafiorentinipsicologa.it/" />
     <meta property="og:title" content="Psicologa a Cremona e online | Saba Fiorentini" />
     <meta
       property="og:description"
       content="Percorsi di sostegno psicologico online e per chi cerca una psicologa a Cremona. Adolescenti, giovani adulti, adulti e coppie."
     />
     <meta property="og:image" content="https://www.sabafiorentinipsicologa.it/assets/saba-fiorentini.png" />
+    <meta property="og:image:alt" content="Saba Fiorentini, psicologa a Cremona e online" />
     <meta property="og:locale" content="it_IT" />
-    <meta name="robots" content="index, follow" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Psicologa a Cremona e online | Saba Fiorentini" />
+    <meta
+      name="twitter:description"
+      content="Percorsi di sostegno psicologico online e per chi cerca una psicologa a Cremona."
+    />
+    <meta name="twitter:image" content="https://www.sabafiorentinipsicologa.it/assets/saba-fiorentini.png" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#faf8f5" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,8 +41,10 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <!-- Accessibilità: salta la navigazione -->
     <a class="skip-link" href="#contenuto">Vai al contenuto</a>
 
+    <!-- Header sticky con menu desktop e hamburger mobile -->
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="Home">
@@ -62,6 +76,7 @@
     </header>
 
     <main id="contenuto">
+      <!-- Hero: presentazione e call-to-action principali -->
       <section class="hero" id="top">
         <div class="container hero-inner">
           <div class="hero-copy">
@@ -108,7 +123,7 @@
               src="./assets/saba-fiorentini.png"
               width="900"
               height="1100"
-              alt="Ritratto di Saba Fiorentini"
+              alt="Saba Fiorentini, psicologa a Cremona e online"
               loading="eager"
               decoding="async"
             />
@@ -122,6 +137,7 @@
         </div>
       </section>
 
+      <!-- Chi sono: formazione ed esperienza -->
       <section class="section" id="chi-sono">
         <div class="container">
           <div class="section-layout">
@@ -172,6 +188,7 @@
         </div>
       </section>
 
+      <!-- Cosa offro: aree di intervento -->
       <section class="section section--alt" id="cosa-offro">
         <div class="container">
           <div class="section-head">
@@ -230,6 +247,7 @@
         </div>
       </section>
 
+      <!-- Attività online -->
       <section class="section" id="online">
         <div class="container">
           <div class="section-layout section-layout--reverse">
@@ -272,6 +290,7 @@
         </div>
       </section>
 
+      <!-- Prenota: form contatti (FormSubmit) + contatti rapidi desktop -->
       <section class="section section--alt" id="prenota">
         <div class="container">
           <div class="cta">
@@ -358,6 +377,7 @@
       </section>
     </main>
 
+    <!-- Footer multi-colonna -->
     <footer class="site-footer">
       <div class="container footer-back-top">
         <a class="footer-back-top__link" href="#top">Torna su</a>
@@ -430,6 +450,7 @@
       </div>
     </footer>
 
+    <!-- Barra contatti fissa su mobile (visibile solo in sezione Prenota) -->
     <div class="mobile-dock" aria-hidden="true">
       <a
         class="mobile-dock__btn mobile-dock__btn--whatsapp"
@@ -445,130 +466,69 @@
       </a>
     </div>
 
-    <script>
-      document.getElementById("year").textContent = String(new Date().getFullYear());
-
-      const navToggle = document.querySelector(".nav-toggle");
-      const navMenu = document.getElementById("nav-menu");
-
-      if (navToggle && navMenu) {
-        const closeMenu = () => {
-          navMenu.classList.remove("is-open");
-          navToggle.classList.remove("is-open");
-          navToggle.setAttribute("aria-expanded", "false");
-          navToggle.setAttribute("aria-label", "Apri menu");
-        };
-
-        navToggle.addEventListener("click", () => {
-          const isOpen = navMenu.classList.toggle("is-open");
-          navToggle.classList.toggle("is-open", isOpen);
-          navToggle.setAttribute("aria-expanded", String(isOpen));
-          navToggle.setAttribute("aria-label", isOpen ? "Chiudi menu" : "Apri menu");
-        });
-
-        navMenu.querySelectorAll("a").forEach((link) => {
-          link.addEventListener("click", closeMenu);
-        });
-
-        window.addEventListener("resize", () => {
-          if (window.innerWidth > 920) closeMenu();
-        });
-      }
-
-      const mobileDock = document.querySelector(".mobile-dock");
-      const prenotaSection = document.getElementById("prenota");
-      const footerSection = document.querySelector(".site-footer");
-
-      if (mobileDock && prenotaSection && footerSection) {
-        const mobileQuery = window.matchMedia("(max-width: 920px)");
-        let prenotaVisible = false;
-        let footerVisible = false;
-        let dockShown = false;
-        let updateTimer = null;
-        let lockUntil = 0;
-
-        const applyDock = (show) => {
-          if (show === dockShown) return;
-          dockShown = show;
-          mobileDock.classList.toggle("is-visible", show);
-          mobileDock.setAttribute("aria-hidden", String(!show));
-        };
-
-        const updateDock = () => {
-          if (!mobileQuery.matches) {
-            applyDock(false);
-            return;
-          }
-
-          const now = Date.now();
-          const show = prenotaVisible && !footerVisible;
-
-          if (now < lockUntil) {
-            updateTimer = window.setTimeout(updateDock, lockUntil - now + 20);
-            return;
-          }
-
-          if (show !== dockShown) {
-            lockUntil = now + 350;
-          }
-
-          applyDock(show);
-        };
-
-        const scheduleUpdate = () => {
-          if (updateTimer) window.clearTimeout(updateTimer);
-          updateTimer = window.setTimeout(updateDock, 200);
-        };
-
-        const prenotaObserver = new IntersectionObserver(
-          ([entry]) => {
-            prenotaVisible = entry.isIntersecting;
-            scheduleUpdate();
-          },
-          { threshold: 0, rootMargin: "-72px 0px -76px 0px" }
-        );
-
-        const footerObserver = new IntersectionObserver(
-          ([entry]) => {
-            footerVisible = entry.isIntersecting;
-            scheduleUpdate();
-          },
-          { threshold: 0, rootMargin: "0px 0px -55% 0px" }
-        );
-
-        prenotaObserver.observe(prenotaSection);
-        footerObserver.observe(footerSection);
-
-        mobileQuery.addEventListener("change", updateDock);
-        window.addEventListener("hashchange", () => window.setTimeout(updateDock, 450));
-
-        document.querySelectorAll('a[href="#prenota"]').forEach((link) => {
-          link.addEventListener("click", () => {
-            window.setTimeout(() => {
-              prenotaVisible = true;
-              footerVisible = false;
-              applyDock(true);
-            }, 450);
-          });
-        });
-
-        updateDock();
-      }
-    </script>
+    <script src="./js/config.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <!-- Dati strutturati Schema.org per motori di ricerca -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Psychologist",
-        "name": "Saba Fiorentini",
-        "url": "https://www.sabafiorentinipsicologa.it/",
-        "image": "https://www.sabafiorentinipsicologa.it/assets/saba-fiorentini.png",
-        "email": "sabafiorentini.psi@gmail.com",
-        "areaServed": ["Cremona", "Online"],
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Cremona",
-          "addressCountry": "IT"
-        }
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.sabafiorentinipsicologa.it/#website",
+            "url": "https://www.sabafiorentinipsicologa.it/",
+            "name": "Saba Fiorentini — Psicologa",
+            "inLanguage": "it-IT"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://www.sabafiorentinipsicologa.it/#webpage",
+            "url": "https://www.sabafiorentinipsicologa.it/",
+            "name": "Psicologa a Cremona e online | Saba Fiorentini",
+            "description": "Saba Fiorentini, psicologa (OPL Lombardia n. 32345). Percorsi di sostegno psicologico online e per chi cerca una psicologa a Cremona.",
+            "isPartOf": { "@id": "https://www.sabafiorentinipsicologa.it/#website" },
+            "about": { "@id": "https://www.sabafiorentinipsicologa.it/#psychologist" },
+            "inLanguage": "it-IT"
+          },
+          {
+            "@type": ["Psychologist", "Person"],
+            "@id": "https://www.sabafiorentinipsicologa.it/#psychologist",
+            "name": "Saba Fiorentini",
+            "jobTitle": "Psicologa",
+            "url": "https://www.sabafiorentinipsicologa.it/",
+            "image": "https://www.sabafiorentinipsicologa.it/assets/saba-fiorentini.png",
+            "email": "sabafiorentini.psi@gmail.com",
+            "telephone": "+393520223912",
+            "description": "Psicologa iscritta all'Ordine degli Psicologi della Lombardia (n. 32345). Sostegno psicologico online per adolescenti, giovani adulti, adulti e coppie.",
+            "areaServed": [
+              { "@type": "City", "name": "Cremona" },
+              { "@type": "AdministrativeArea", "name": "Lombardia" },
+              "Online"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Cremona",
+              "addressRegion": "Lombardia",
+              "addressCountry": "IT"
+            },
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "Ordine degli Psicologi della Lombardia",
+              "identifier": "32345"
+            },
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "Università degli Studi di Bergamo"
+            },
+            "knowsAbout": [
+              "Psicologia clinica",
+              "Sostegno psicologico online",
+              "Counseling di coppia",
+              "Psicologia degli adolescenti"
+            ],
+            "isAcceptingNewPatients": true
+          }
+        ]
       }
     </script>
   </body>

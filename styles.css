@@ -1,3 +1,6 @@
+/* ==========================================================================
+   Variabili CSS — palette, spaziature e dimensioni condivise
+   ========================================================================== */
 :root {
   --bg: #faf8f5;
   --bg-soft: #f3efe8;
@@ -18,6 +21,9 @@
   --section-offset: calc(var(--header-height) + 16px);
 }
 
+/* ==========================================================================
+   Reset e stili base
+   ========================================================================== */
 *,
 *::before,
 *::after {
@@ -64,6 +70,9 @@ a {
   text-underline-offset: 0.18em;
 }
 
+/* ==========================================================================
+   Layout: container, scroll snap e sezioni full-page
+   ========================================================================== */
 .container {
   width: min(var(--container), calc(100% - 40px));
   margin: 0 auto;
@@ -90,6 +99,9 @@ a {
   z-index: 999;
 }
 
+/* ==========================================================================
+   Header e navigazione
+   ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
@@ -249,6 +261,9 @@ button.btn {
   flex-shrink: 0;
 }
 
+/* ==========================================================================
+   Hero — prima sezione above the fold
+   ========================================================================== */
 .hero {
   padding-left: 0;
   padding-right: 0;
@@ -355,6 +370,9 @@ button.btn {
   font-size: 0.92rem;
 }
 
+/* ==========================================================================
+   Sezioni interne, griglie e card
+   ========================================================================== */
 .section {
   padding-left: 0;
   padding-right: 0;
@@ -544,6 +562,9 @@ button.btn {
   color: var(--muted);
 }
 
+/* ==========================================================================
+   Form contatti e sezione Prenota
+   ========================================================================== */
 .form {
   margin-top: 14px;
 }
@@ -648,6 +669,9 @@ textarea:focus {
   font-size: 0.9rem;
 }
 
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 .site-footer {
   background: #2c3e44;
   color: rgba(255, 255, 255, 0.88);
@@ -766,10 +790,33 @@ textarea:focus {
   border-color: rgba(255, 255, 255, 0.35);
 }
 
+/* ==========================================================================
+   Barra contatti mobile (WhatsApp + Email)
+   ========================================================================== */
 .mobile-dock {
   display: none;
 }
 
+/* ==========================================================================
+   Pagina di conferma invio form (grazie.html)
+   ========================================================================== */
+.thank-you__title {
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+}
+
+.thank-you__text {
+  margin: 0;
+  color: var(--muted);
+}
+
+.thank-you__actions {
+  margin-top: 14px;
+}
+
+/* ==========================================================================
+   Responsive — tablet e mobile (max-width: 920px)
+   ========================================================================== */
 @media (max-width: 920px) {
   :root {
     --mobile-dock-height: 76px;
@@ -815,7 +862,9 @@ textarea:focus {
   }
 
   .footer-grid {
-    padding-top: 20px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 20px 0 32px;
   }
 
   .footer-bottom__link {
@@ -889,6 +938,12 @@ textarea:focus {
     display: none;
   }
 
+  /* Fallback: se JS non è attivo, mostra i contatti rapidi nella pagina */
+  .no-js .cta-card {
+    display: block;
+    margin-top: 18px;
+  }
+
   .mobile-dock {
     display: grid;
     grid-template-columns: 1.45fr 1fr;
@@ -954,12 +1009,6 @@ textarea:focus {
     flex-shrink: 0;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 40px 0 32px;
-  }
-
   .footer-brand {
     grid-column: auto;
   }
@@ -1005,6 +1054,9 @@ textarea:focus {
   }
 }
 
+/* ==========================================================================
+   Responsive — smartphone (max-width: 720px)
+   ========================================================================== */
 @media (max-width: 720px) {
   :root {
     --header-height: 64px;

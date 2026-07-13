@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.sabafiorentinipsicologa.it/sitemap.xml
+# Pagina di conferma form: non indicizzare
+Disallow: /grazie.html
 
+Sitemap: https://www.sabafiorentinipsicologa.it/sitemap.xml

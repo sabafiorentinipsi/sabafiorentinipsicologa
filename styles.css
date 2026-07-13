@@ -550,7 +550,11 @@ textarea:focus {
 .site-footer {
   background: #2c3e44;
   color: rgba(255, 255, 255, 0.88);
-  scroll-snap-align: none;
+  scroll-snap-align: start;
+}
+
+.footer-back-top {
+  display: none;
 }
 
 .footer-grid {
@@ -668,6 +672,50 @@ textarea:focus {
 @media (max-width: 920px) {
   :root {
     --mobile-dock-height: 76px;
+  }
+
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .hero,
+  .section {
+    scroll-snap-stop: normal;
+  }
+
+  .footer-back-top {
+    display: block;
+    padding-top: 28px;
+  }
+
+  .footer-back-top__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-back-top__link:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .footer-grid {
+    padding-top: 20px;
+  }
+
+  .footer-bottom__link {
+    display: none;
+  }
+
+  .site-footer {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   .nav-toggle {

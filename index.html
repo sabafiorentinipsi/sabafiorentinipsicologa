@@ -305,6 +305,9 @@
     </main>
 
     <footer class="site-footer">
+      <div class="container footer-back-top">
+        <a class="footer-back-top__link" href="#top">Torna su</a>
+      </div>
       <div class="container footer-grid">
         <div class="footer-brand">
           <p class="footer-brand__name">Saba Fiorentini</p>
@@ -420,26 +423,32 @@
 
       const mobileDock = document.querySelector(".mobile-dock");
       const prenotaSection = document.getElementById("prenota");
+      const footerSection = document.querySelector(".site-footer");
 
       if (mobileDock && prenotaSection) {
         let prenotaVisible = false;
+        let footerVisible = false;
 
         const updateDock = () => {
           const isMobile = window.matchMedia("(max-width: 920px)").matches;
-          const show = isMobile && prenotaVisible;
+          const show = isMobile && prenotaVisible && !footerVisible;
           mobileDock.classList.toggle("is-visible", show);
           mobileDock.setAttribute("aria-hidden", String(!show));
         };
 
         const observer = new IntersectionObserver(
-          ([entry]) => {
-            prenotaVisible = entry.isIntersecting;
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.target.id === "prenota") prenotaVisible = entry.isIntersecting;
+              if (entry.target.classList.contains("site-footer")) footerVisible = entry.isIntersecting;
+            });
             updateDock();
           },
-          { threshold: 0.12, rootMargin: "-72px 0px -64px 0px" }
+          { threshold: 0.08, rootMargin: "-72px 0px -64px 0px" }
         );
 
         observer.observe(prenotaSection);
+        if (footerSection) observer.observe(footerSection);
         window.addEventListener("resize", updateDock);
       }
     </script>

@@ -652,8 +652,6 @@ textarea:focus {
   background: #2c3e44;
   color: rgba(255, 255, 255, 0.88);
   scroll-snap-align: start;
-  position: relative;
-  z-index: 45;
 }
 
 .footer-back-top {
@@ -789,8 +787,10 @@ textarea:focus {
   .footer-back-top {
     display: block;
     padding-top: 28px;
-    position: relative;
-    z-index: 46;
+  }
+
+  body.dock-visible .footer-back-top {
+    display: none;
   }
 
   .footer-back-top__link {
@@ -900,7 +900,7 @@ textarea:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 35;
+    z-index: 40;
     padding: 10px 16px;
     padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
     background: rgba(250, 248, 245, 0.96);

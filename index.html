@@ -476,54 +476,43 @@
       }
 
       const mobileDock = document.querySelector(".mobile-dock");
-      const prenotaTrigger = document.querySelector("#prenota .cta");
-      const footerTrigger = document.querySelector(".footer-back-top");
+      const prenotaSection = document.getElementById("prenota");
+      const footerSection = document.querySelector(".site-footer");
 
-      if (mobileDock && prenotaTrigger) {
-        let prenotaVisible = false;
-        let footerNear = false;
-
+      if (mobileDock && prenotaSection && footerSection) {
         const updateDock = () => {
           const isMobile = window.matchMedia("(max-width: 920px)").matches;
-          const show = isMobile && prenotaVisible && !footerNear;
+          if (!isMobile) {
+            mobileDock.classList.remove("is-visible");
+            document.body.classList.remove("dock-visible");
+            mobileDock.setAttribute("aria-hidden", "true");
+            return;
+          }
+
+          const prenotaRect = prenotaSection.getBoundingClientRect();
+          const footerRect = footerSection.getBoundingClientRect();
+
+          const inPrenota =
+            prenotaRect.top < window.innerHeight * 0.85 && prenotaRect.bottom > 96;
+
+          const inFooter = footerRect.top < window.innerHeight * 0.55;
+
+          const show = inPrenota && !inFooter;
+
           mobileDock.classList.toggle("is-visible", show);
+          document.body.classList.toggle("dock-visible", show);
           mobileDock.setAttribute("aria-hidden", String(!show));
         };
 
-        const prenotaObserver = new IntersectionObserver(
-          ([entry]) => {
-            prenotaVisible = entry.isIntersecting;
-            updateDock();
-          },
-          { threshold: 0.15, rootMargin: "-72px 0px -80px 0px" }
-        );
+        window.addEventListener("scroll", updateDock, { passive: true });
+        window.addEventListener("resize", updateDock);
+        window.addEventListener("hashchange", () => setTimeout(updateDock, 350));
 
-        prenotaObserver.observe(prenotaTrigger);
-
-        const checkFooterNear = () => {
-          if (!footerTrigger) return;
-          const rect = footerTrigger.getBoundingClientRect();
-          footerNear = rect.top < window.innerHeight - 8;
-          updateDock();
-        };
-
-        if (footerTrigger) {
-          const footerObserver = new IntersectionObserver(
-            ([entry]) => {
-              footerNear = entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight;
-              updateDock();
-            },
-            { threshold: 0, rootMargin: "0px 0px 0px 0px" }
-          );
-          footerObserver.observe(footerTrigger);
-        }
-
-        window.addEventListener("scroll", checkFooterNear, { passive: true });
-        window.addEventListener("resize", () => {
-          checkFooterNear();
-          updateDock();
+        document.querySelectorAll('a[href="#prenota"]').forEach((link) => {
+          link.addEventListener("click", () => setTimeout(updateDock, 350));
         });
-        checkFooterNear();
+
+        updateDock();
       }
     </script>
     <script type="application/ld+json">

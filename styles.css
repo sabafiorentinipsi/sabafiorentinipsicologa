@@ -15,6 +15,7 @@
   --radius-sm: 14px;
   --container: 1120px;
   --header-height: 72px;
+  --section-offset: calc(var(--header-height) + 16px);
 }
 
 *,
@@ -31,14 +32,14 @@ html {
 .hero,
 .section {
   min-height: 100vh;
-  height: 100vh;
+  min-height: 100dvh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: var(--header-height);
+  justify-content: safe center;
+  padding-top: var(--section-offset);
   padding-bottom: 24px;
   box-sizing: border-box;
 }
@@ -545,6 +546,17 @@ textarea:focus {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --header-height: 64px;
+    --section-offset: calc(var(--header-height) + 20px);
+  }
+
+  .hero,
+  .section {
+    justify-content: flex-start;
+    scroll-snap-stop: normal;
+  }
+
   .grid--two,
   .grid--three {
     grid-template-columns: 1fr;

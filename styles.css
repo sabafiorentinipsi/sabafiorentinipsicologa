@@ -789,18 +789,11 @@ textarea:focus {
     padding-top: 28px;
   }
 
-  body.dock-visible .footer-back-top {
-    visibility: hidden;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
   #prenota {
     min-height: calc(100dvh - var(--header-height));
     overflow-y: visible;
     scroll-snap-align: none;
-    padding-bottom: calc(32px + var(--mobile-dock-height, 76px));
+    padding-bottom: calc(40px + var(--mobile-dock-height, 76px));
   }
 
   .footer-back-top__link {
@@ -911,7 +904,6 @@ textarea:focus {
     border-top: 1px solid var(--stroke);
     box-shadow: 0 -8px 24px rgba(60, 50, 40, 0.1);
     transform: translateY(110%);
-    transition: transform 220ms ease;
     pointer-events: none;
   }
 

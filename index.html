@@ -480,47 +480,61 @@
       const footerSection = document.querySelector(".site-footer");
 
       if (mobileDock && prenotaSection && footerSection) {
+        const mobileQuery = window.matchMedia("(max-width: 920px)");
+        let prenotaRatio = 0;
+        let footerRatio = 0;
         let dockShown = false;
+        let updateTimer = null;
 
-        const updateDock = () => {
-          const isMobile = window.matchMedia("(max-width: 920px)").matches;
-          if (!isMobile) {
-            if (dockShown) {
-              dockShown = false;
-              mobileDock.classList.remove("is-visible");
-              document.body.classList.remove("dock-visible");
-              mobileDock.setAttribute("aria-hidden", "true");
-            }
-            return;
-          }
-
-          const scrollY = window.scrollY;
-          const viewportHeight = window.innerHeight;
-          const prenotaTop = prenotaSection.offsetTop;
-          const prenotaBottom = prenotaTop + prenotaSection.offsetHeight;
-          const viewportBottom = scrollY + viewportHeight;
-
-          const inPrenota =
-            viewportBottom > prenotaTop + 120 && scrollY < prenotaBottom - 80;
-
-          const inFooter = viewportBottom > prenotaBottom + 24;
-
-          const show = inPrenota && !inFooter;
-
+        const setDock = (show) => {
           if (show === dockShown) return;
-
           dockShown = show;
           mobileDock.classList.toggle("is-visible", show);
-          document.body.classList.toggle("dock-visible", show);
           mobileDock.setAttribute("aria-hidden", String(!show));
         };
 
-        window.addEventListener("scroll", updateDock, { passive: true });
-        window.addEventListener("resize", updateDock);
-        window.addEventListener("hashchange", () => setTimeout(updateDock, 350));
+        const updateDock = () => {
+          if (!mobileQuery.matches) {
+            setDock(false);
+            return;
+          }
+
+          let show;
+          if (dockShown) {
+            show = prenotaRatio > 0.05 && footerRatio < 0.12;
+          } else {
+            show = prenotaRatio > 0.12 && footerRatio < 0.05;
+          }
+
+          setDock(show);
+        };
+
+        const scheduleUpdate = () => {
+          if (updateTimer) window.clearTimeout(updateTimer);
+          updateTimer = window.setTimeout(updateDock, 120);
+        };
+
+        const ratios = [0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+
+        const sectionObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.target === prenotaSection) prenotaRatio = entry.intersectionRatio;
+              if (entry.target === footerSection) footerRatio = entry.intersectionRatio;
+            });
+            scheduleUpdate();
+          },
+          { threshold: ratios, rootMargin: "-72px 0px 0px 0px" }
+        );
+
+        sectionObserver.observe(prenotaSection);
+        sectionObserver.observe(footerSection);
+
+        mobileQuery.addEventListener("change", updateDock);
+        window.addEventListener("hashchange", () => window.setTimeout(updateDock, 400));
 
         document.querySelectorAll('a[href="#prenota"]').forEach((link) => {
-          link.addEventListener("click", () => setTimeout(updateDock, 350));
+          link.addEventListener("click", () => window.setTimeout(updateDock, 400));
         });
 
         updateDock();

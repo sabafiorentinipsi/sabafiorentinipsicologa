@@ -481,12 +481,13 @@
 
       if (mobileDock && prenotaSection && footerSection) {
         const mobileQuery = window.matchMedia("(max-width: 920px)");
-        let prenotaRatio = 0;
-        let footerRatio = 0;
+        let prenotaVisible = false;
+        let footerVisible = false;
         let dockShown = false;
         let updateTimer = null;
+        let lockUntil = 0;
 
-        const setDock = (show) => {
+        const applyDock = (show) => {
           if (show === dockShown) return;
           dockShown = show;
           mobileDock.classList.toggle("is-visible", show);
@@ -495,46 +496,60 @@
 
         const updateDock = () => {
           if (!mobileQuery.matches) {
-            setDock(false);
+            applyDock(false);
             return;
           }
 
-          let show;
-          if (dockShown) {
-            show = prenotaRatio > 0.05 && footerRatio < 0.12;
-          } else {
-            show = prenotaRatio > 0.12 && footerRatio < 0.05;
+          const now = Date.now();
+          const show = prenotaVisible && !footerVisible;
+
+          if (now < lockUntil) {
+            updateTimer = window.setTimeout(updateDock, lockUntil - now + 20);
+            return;
           }
 
-          setDock(show);
+          if (show !== dockShown) {
+            lockUntil = now + 350;
+          }
+
+          applyDock(show);
         };
 
         const scheduleUpdate = () => {
           if (updateTimer) window.clearTimeout(updateTimer);
-          updateTimer = window.setTimeout(updateDock, 120);
+          updateTimer = window.setTimeout(updateDock, 200);
         };
 
-        const ratios = [0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
-
-        const sectionObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.target === prenotaSection) prenotaRatio = entry.intersectionRatio;
-              if (entry.target === footerSection) footerRatio = entry.intersectionRatio;
-            });
+        const prenotaObserver = new IntersectionObserver(
+          ([entry]) => {
+            prenotaVisible = entry.isIntersecting;
             scheduleUpdate();
           },
-          { threshold: ratios, rootMargin: "-72px 0px 0px 0px" }
+          { threshold: 0, rootMargin: "-72px 0px -76px 0px" }
         );
 
-        sectionObserver.observe(prenotaSection);
-        sectionObserver.observe(footerSection);
+        const footerObserver = new IntersectionObserver(
+          ([entry]) => {
+            footerVisible = entry.isIntersecting;
+            scheduleUpdate();
+          },
+          { threshold: 0, rootMargin: "0px 0px -55% 0px" }
+        );
+
+        prenotaObserver.observe(prenotaSection);
+        footerObserver.observe(footerSection);
 
         mobileQuery.addEventListener("change", updateDock);
-        window.addEventListener("hashchange", () => window.setTimeout(updateDock, 400));
+        window.addEventListener("hashchange", () => window.setTimeout(updateDock, 450));
 
         document.querySelectorAll('a[href="#prenota"]').forEach((link) => {
-          link.addEventListener("click", () => window.setTimeout(updateDock, 400));
+          link.addEventListener("click", () => {
+            window.setTimeout(() => {
+              prenotaVisible = true;
+              footerVisible = false;
+              applyDock(true);
+            }, 450);
+          });
         });
 
         updateDock();

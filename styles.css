@@ -903,12 +903,14 @@ textarea:focus {
     background: #faf8f5;
     border-top: 1px solid var(--stroke);
     box-shadow: 0 -8px 24px rgba(60, 50, 40, 0.1);
-    transform: translateY(110%);
+    opacity: 0;
+    visibility: hidden;
     pointer-events: none;
   }
 
   .mobile-dock.is-visible {
-    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
     pointer-events: auto;
   }
 

@@ -37,14 +37,27 @@
           <span class="brand__role">Psicologa</span>
         </a>
 
-        <nav class="nav" aria-label="Navigazione principale">
+        <nav class="nav" id="nav-menu" aria-label="Navigazione principale">
           <a href="#chi-sono">Chi sono</a>
           <a href="#cosa-offro">Cosa offro</a>
           <a href="#online">Online</a>
           <a href="#contatti">Contatti</a>
         </nav>
 
-        <a class="btn btn--primary header-cta" href="#prenota">Prenota</a>
+        <div class="header-actions">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            aria-label="Apri menu"
+          >
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+          <a class="btn btn--primary header-cta" href="#prenota">Prenota</a>
+        </div>
       </div>
     </header>
 
@@ -330,6 +343,33 @@
 
     <script>
       document.getElementById("year").textContent = String(new Date().getFullYear());
+
+      const navToggle = document.querySelector(".nav-toggle");
+      const navMenu = document.getElementById("nav-menu");
+
+      if (navToggle && navMenu) {
+        const closeMenu = () => {
+          navMenu.classList.remove("is-open");
+          navToggle.classList.remove("is-open");
+          navToggle.setAttribute("aria-expanded", "false");
+          navToggle.setAttribute("aria-label", "Apri menu");
+        };
+
+        navToggle.addEventListener("click", () => {
+          const isOpen = navMenu.classList.toggle("is-open");
+          navToggle.classList.toggle("is-open", isOpen);
+          navToggle.setAttribute("aria-expanded", String(isOpen));
+          navToggle.setAttribute("aria-label", isOpen ? "Chiudi menu" : "Apri menu");
+        });
+
+        navMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 920) closeMenu();
+        });
+      }
     </script>
     <script type="application/ld+json">
       {

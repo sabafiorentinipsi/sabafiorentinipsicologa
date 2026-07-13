@@ -476,34 +476,54 @@
       }
 
       const mobileDock = document.querySelector(".mobile-dock");
-      const prenotaSection = document.getElementById("prenota");
-      const footerSection = document.querySelector(".site-footer");
+      const prenotaTrigger = document.querySelector("#prenota .cta");
+      const footerTrigger = document.querySelector(".footer-back-top");
 
-      if (mobileDock && prenotaSection) {
+      if (mobileDock && prenotaTrigger) {
         let prenotaVisible = false;
-        let footerVisible = false;
+        let footerNear = false;
 
         const updateDock = () => {
           const isMobile = window.matchMedia("(max-width: 920px)").matches;
-          const show = isMobile && prenotaVisible && !footerVisible;
+          const show = isMobile && prenotaVisible && !footerNear;
           mobileDock.classList.toggle("is-visible", show);
           mobileDock.setAttribute("aria-hidden", String(!show));
         };
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.target.id === "prenota") prenotaVisible = entry.isIntersecting;
-              if (entry.target.classList.contains("site-footer")) footerVisible = entry.isIntersecting;
-            });
+        const prenotaObserver = new IntersectionObserver(
+          ([entry]) => {
+            prenotaVisible = entry.isIntersecting;
             updateDock();
           },
-          { threshold: 0.08, rootMargin: "-72px 0px -64px 0px" }
+          { threshold: 0.15, rootMargin: "-72px 0px -80px 0px" }
         );
 
-        observer.observe(prenotaSection);
-        if (footerSection) observer.observe(footerSection);
-        window.addEventListener("resize", updateDock);
+        prenotaObserver.observe(prenotaTrigger);
+
+        const checkFooterNear = () => {
+          if (!footerTrigger) return;
+          const rect = footerTrigger.getBoundingClientRect();
+          footerNear = rect.top < window.innerHeight - 8;
+          updateDock();
+        };
+
+        if (footerTrigger) {
+          const footerObserver = new IntersectionObserver(
+            ([entry]) => {
+              footerNear = entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight;
+              updateDock();
+            },
+            { threshold: 0, rootMargin: "0px 0px 0px 0px" }
+          );
+          footerObserver.observe(footerTrigger);
+        }
+
+        window.addEventListener("scroll", checkFooterNear, { passive: true });
+        window.addEventListener("resize", () => {
+          checkFooterNear();
+          updateDock();
+        });
+        checkFooterNear();
       }
     </script>
     <script type="application/ld+json">

@@ -793,6 +793,10 @@ textarea:focus {
     display: none;
   }
 
+  body.dock-visible .site-footer {
+    display: none;
+  }
+
   .footer-back-top__link {
     display: flex;
     align-items: center;
@@ -903,7 +907,7 @@ textarea:focus {
     z-index: 40;
     padding: 10px 16px;
     padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
-    background: rgba(250, 248, 245, 0.96);
+    background: #faf8f5;
     border-top: 1px solid var(--stroke);
     box-shadow: 0 -8px 24px rgba(60, 50, 40, 0.1);
     transform: translateY(110%);

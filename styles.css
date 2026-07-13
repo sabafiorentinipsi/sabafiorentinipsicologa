@@ -25,11 +25,26 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height);
+  scroll-snap-type: y mandatory;
+}
+
+.hero,
+.section {
+  min-height: 100vh;
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: var(--header-height);
+  padding-bottom: 24px;
+  box-sizing: border-box;
 }
 
 section[id] {
-  scroll-margin-top: var(--header-height);
+  scroll-margin-top: 0;
 }
 
 body {
@@ -191,7 +206,8 @@ button.btn {
 }
 
 .hero {
-  padding: 58px 0 22px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .hero-inner {
@@ -276,7 +292,8 @@ button.btn {
 }
 
 .section {
-  padding: 56px 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .section--alt {
@@ -528,10 +545,8 @@ textarea:focus {
   .header-inner {
     padding: 12px 0;
   }
-  .hero {
-    padding: 42px 0 10px;
-  }
+  .hero,
   .section {
-    padding: 46px 0;
+    padding-bottom: 16px;
   }
 }

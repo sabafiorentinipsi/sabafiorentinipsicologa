@@ -41,7 +41,6 @@
           <a href="#chi-sono">Chi sono</a>
           <a href="#cosa-offro">Cosa offro</a>
           <a href="#online">Online</a>
-          <a href="#contatti">Contatti</a>
         </nav>
 
         <div class="header-actions">
@@ -303,32 +302,6 @@
           </div>
         </div>
       </section>
-
-      <section class="section" id="contatti">
-        <div class="container">
-          <div class="section-head">
-            <h2>Contatti</h2>
-            <p>Scrivimi e ti risponderò appena possibile.</p>
-          </div>
-
-          <div class="grid grid--two">
-            <div class="card">
-              <h3>Telefono (anche WhatsApp)</h3>
-              <p>
-                <a href="tel:+393520223912">+39 352 022 3912</a>
-              </p>
-            </div>
-            <div class="card">
-              <h3>Email</h3>
-              <p>
-                <a href="mailto:sabafiorentini.psi@gmail.com"
-                  >sabafiorentini.psi@gmail.com</a
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">
@@ -387,31 +360,27 @@
       }
 
       const mobileDock = document.querySelector(".mobile-dock");
-      const contactSections = document.querySelectorAll("#prenota, #contatti");
+      const prenotaSection = document.getElementById("prenota");
 
-      if (mobileDock && contactSections.length) {
+      if (mobileDock && prenotaSection) {
         let prenotaVisible = false;
-        let contattiVisible = false;
 
         const updateDock = () => {
           const isMobile = window.matchMedia("(max-width: 920px)").matches;
-          const show = isMobile && (prenotaVisible || contattiVisible);
+          const show = isMobile && prenotaVisible;
           mobileDock.classList.toggle("is-visible", show);
           mobileDock.setAttribute("aria-hidden", String(!show));
         };
 
         const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.target.id === "prenota") prenotaVisible = entry.isIntersecting;
-              if (entry.target.id === "contatti") contattiVisible = entry.isIntersecting;
-            });
+          ([entry]) => {
+            prenotaVisible = entry.isIntersecting;
             updateDock();
           },
           { threshold: 0.12, rootMargin: "-72px 0px -64px 0px" }
         );
 
-        contactSections.forEach((section) => observer.observe(section));
+        observer.observe(prenotaSection);
         window.addEventListener("resize", updateDock);
       }
     </script>

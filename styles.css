@@ -634,8 +634,7 @@ textarea:focus {
     display: none;
   }
 
-  #prenota,
-  #contatti {
+  #prenota {
     min-height: auto;
     overflow-y: visible;
     padding-bottom: calc(24px + var(--mobile-dock-height, 76px));

@@ -1,15 +1,16 @@
 :root {
-  --bg: #0b1220;
-  --bg-soft: #0f172a;
-  --card: rgba(255, 255, 255, 0.06);
-  --card-strong: rgba(255, 255, 255, 0.09);
-  --stroke: rgba(255, 255, 255, 0.12);
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.72);
-  --muted-2: rgba(255, 255, 255, 0.62);
-  --accent: #60a5fa;
-  --accent-2: #a78bfa;
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+  --bg: #faf8f5;
+  --bg-soft: #f3efe8;
+  --card: #ffffff;
+  --card-strong: #ffffff;
+  --stroke: rgba(60, 50, 40, 0.12);
+  --text: #2c2824;
+  --muted: #5c554c;
+  --muted-2: #7a7268;
+  --accent: #6b8f71;
+  --accent-2: #8fa88f;
+  --accent-soft: rgba(107, 143, 113, 0.12);
+  --shadow: 0 12px 40px rgba(60, 50, 40, 0.08);
   --radius: 18px;
   --radius-sm: 14px;
   --container: 1120px;
@@ -28,9 +29,9 @@ html {
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  background: radial-gradient(1200px 800px at 15% -10%, rgba(96, 165, 250, 0.25), transparent 55%),
-    radial-gradient(900px 650px at 85% 0%, rgba(167, 139, 250, 0.22), transparent 45%),
-    radial-gradient(900px 650px at 50% 120%, rgba(96, 165, 250, 0.16), transparent 40%),
+  background: radial-gradient(1200px 800px at 15% -10%, rgba(143, 168, 143, 0.18), transparent 55%),
+    radial-gradient(900px 650px at 85% 0%, rgba(210, 195, 170, 0.25), transparent 45%),
+    radial-gradient(900px 650px at 50% 120%, rgba(107, 143, 113, 0.1), transparent 40%),
     var(--bg);
   color: var(--text);
   line-height: 1.55;
@@ -61,7 +62,7 @@ a {
   width: auto;
   height: auto;
   padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--card);
   border: 1px solid var(--stroke);
   border-radius: 12px;
   z-index: 999;
@@ -72,8 +73,8 @@ a {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(14px);
-  background: rgba(11, 18, 32, 0.64);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(250, 248, 245, 0.88);
+  border-bottom: 1px solid var(--stroke);
 }
 
 .header-inner {
@@ -140,21 +141,23 @@ a {
 }
 
 .btn--primary {
-  border-color: rgba(96, 165, 250, 0.35);
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.22), rgba(167, 139, 250, 0.18));
+  border-color: rgba(107, 143, 113, 0.4);
+  background: linear-gradient(135deg, rgba(107, 143, 113, 0.18), rgba(143, 168, 143, 0.14));
+  color: var(--text);
 }
 
 .btn--primary:hover {
-  border-color: rgba(96, 165, 250, 0.55);
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.28), rgba(167, 139, 250, 0.22));
+  border-color: rgba(107, 143, 113, 0.55);
+  background: linear-gradient(135deg, rgba(107, 143, 113, 0.28), rgba(143, 168, 143, 0.22));
 }
 
 .btn--ghost {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: #ffffff;
+  border-color: rgba(60, 50, 40, 0.2);
 }
 
 .hero {
@@ -174,7 +177,7 @@ a {
   gap: 10px;
   margin: 0 0 10px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--accent);
 }
 
 .hero h1 {
@@ -211,8 +214,8 @@ a {
 }
 
 .hero-card {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--stroke);
+  background: var(--card);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -222,12 +225,12 @@ a {
   width: 100%;
   height: auto;
   display: block;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-soft);
 }
 
 .hero-meta {
   padding: 14px 16px 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--stroke);
 }
 
 .hero-meta__name {
@@ -247,9 +250,9 @@ a {
 }
 
 .section--alt {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, var(--bg-soft), rgba(243, 239, 232, 0.5));
+  border-top: 1px solid var(--stroke);
+  border-bottom: 1px solid var(--stroke);
 }
 
 .section-head {
@@ -282,10 +285,11 @@ a {
 }
 
 .card {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--stroke);
   background: var(--card);
   border-radius: var(--radius-sm);
   padding: 16px 16px 18px;
+  box-shadow: 0 4px 16px rgba(60, 50, 40, 0.04);
 }
 
 .card h3 {
@@ -300,8 +304,8 @@ a {
 
 .callout {
   margin-top: 14px;
-  border: 1px solid rgba(96, 165, 250, 0.26);
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.12), rgba(167, 139, 250, 0.08));
+  border: 1px solid rgba(107, 143, 113, 0.3);
+  background: linear-gradient(135deg, rgba(107, 143, 113, 0.1), rgba(143, 168, 143, 0.06));
   border-radius: var(--radius-sm);
   padding: 16px;
 }
@@ -374,8 +378,8 @@ input,
 textarea {
   width: 100%;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(11, 18, 32, 0.55);
+  border: 1px solid var(--stroke);
+  background: #ffffff;
   color: var(--text);
   padding: 11px 12px;
   font: inherit;
@@ -389,7 +393,8 @@ textarea {
 
 input:focus,
 textarea:focus {
-  border-color: rgba(96, 165, 250, 0.5);
+  border-color: rgba(107, 143, 113, 0.55);
+  box-shadow: 0 0 0 3px rgba(107, 143, 113, 0.12);
 }
 
 .form-note {
@@ -399,10 +404,11 @@ textarea:focus {
 }
 
 .cta-card {
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--stroke);
   background: var(--card-strong);
   border-radius: var(--radius);
   padding: 16px;
+  box-shadow: var(--shadow);
 }
 
 .cta-card__kicker {
@@ -430,7 +436,7 @@ textarea:focus {
 }
 
 .cta-card__list a {
-  color: var(--text);
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -442,8 +448,8 @@ textarea:focus {
 
 .site-footer {
   padding: 28px 0 36px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(11, 18, 32, 0.55);
+  border-top: 1px solid var(--stroke);
+  background: var(--bg-soft);
 }
 
 .footer-inner {
@@ -458,15 +464,15 @@ textarea:focus {
 .footer-link {
   color: var(--muted);
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--stroke);
   padding: 8px 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card);
 }
 
 .footer-link:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
+  background: #ffffff;
 }
 
 @media (max-width: 920px) {

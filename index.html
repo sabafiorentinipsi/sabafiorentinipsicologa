@@ -3,11 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Saba Fiorentini | Psicologa</title>
+    <title>Psicologa a Cremona e online | Saba Fiorentini</title>
     <meta
       name="description"
-      content="Saba Fiorentini, psicologa iscritta all’Ordine degli Psicologi della Lombardia (n. 32345). Percorsi di sostegno psicologico online per adolescenti, giovani adulti, adulti e coppie."
+      content="Saba Fiorentini, psicologa (OPL Lombardia n. 32345). Percorsi di sostegno psicologico online e per chi cerca una psicologa a Cremona: adolescenti, giovani adulti, adulti e coppie."
     />
+    <link rel="canonical" href="https://www.sabafiorentinipsicologa.it/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Psicologa a Cremona e online | Saba Fiorentini" />
+    <meta
+      property="og:description"
+      content="Percorsi di sostegno psicologico online e per chi cerca una psicologa a Cremona. Adolescenti, giovani adulti, adulti e coppie."
+    />
+    <meta property="og:image" content="https://www.sabafiorentinipsicologa.it/assets/saba-fiorentini.png" />
+    <meta property="og:locale" content="it_IT" />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0f172a" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,6 +58,11 @@
               Mi chiamo <strong>Saba Fiorentini</strong> e sono una psicologa,
               iscritta all’Ordine degli Psicologi della Lombardia con il n.
               <strong>32345</strong>.
+            </p>
+            <p class="lead">
+              Se stai cercando una <strong>psicologa a Cremona</strong> o un
+              percorso di <strong>psicologia online</strong>, possiamo valutare
+              insieme un primo colloquio.
             </p>
 
             <div class="hero-actions">
@@ -202,31 +217,56 @@
             <div class="cta-copy">
               <h2>Prenota un colloquio</h2>
               <p>
-                Per fissare un appuntamento, contattami su WhatsApp o via email.
-                Se hai già un link al “form per prenotazioni”, posso inserirlo
-                qui in modo evidente.
+                Puoi contattarmi via email oppure usare questa form: il messaggio
+                verrà inviato direttamente a
+                <strong>sabafiorentini.psi@gmail.com</strong>.
               </p>
-              <div class="cta-actions">
-                <a
-                  class="btn btn--primary"
-                  href="https://wa.me/393520223912"
-                  target="_blank"
-                  rel="noreferrer"
-                  >Scrivimi su WhatsApp</a
-                >
-                <a class="btn btn--ghost" href="mailto:sabafiorentini.psi@gmail.com"
-                  >Scrivimi via email</a
-                >
-              </div>
+              <form
+                class="form"
+                action="https://formsubmit.co/sabafiorentini.psi@gmail.com"
+                method="POST"
+              >
+                <input type="hidden" name="_subject" value="Richiesta dal sito - Saba Fiorentini" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value="https://www.sabafiorentinipsicologa.it/grazie.html" />
+
+                <div class="form-grid">
+                  <label class="field">
+                    <span>Nome e cognome</span>
+                    <input name="nome" type="text" autocomplete="name" required />
+                  </label>
+                  <label class="field">
+                    <span>Email</span>
+                    <input name="email" type="email" autocomplete="email" required />
+                  </label>
+                </div>
+
+                <label class="field">
+                  <span>Messaggio</span>
+                  <textarea name="messaggio" rows="6" required></textarea>
+                </label>
+
+                <div class="cta-actions">
+                  <button class="btn btn--primary" type="submit">Invia richiesta</button>
+                  <a class="btn btn--ghost" href="mailto:sabafiorentini.psi@gmail.com"
+                    >Scrivimi via email</a
+                  >
+                  <a class="btn btn--ghost btn--disabled" href="#" aria-disabled="true"
+                    >WhatsApp (numero in aggiornamento)</a
+                  >
+                </div>
+                <p class="form-note">
+                  Inviando la richiesta accetti che i dati siano usati solo per ricontattarti.
+                </p>
+              </form>
             </div>
             <div class="cta-card">
               <p class="cta-card__kicker">Contatti rapidi</p>
               <ul class="cta-card__list">
                 <li>
                   <span>WhatsApp</span>
-                  <a href="https://wa.me/393520223912" target="_blank" rel="noreferrer"
-                    >+39 352 022 3912</a
-                  >
+                  <span class="muted">Numero in aggiornamento</span>
                 </li>
                 <li>
                   <span>Email</span>
@@ -254,7 +294,7 @@
             <div class="card">
               <h3>Telefono (anche WhatsApp)</h3>
               <p>
-                <a href="tel:+393520223912">+39 352 022 3912</a>
+                <span class="muted">Numero in aggiornamento</span>
               </p>
             </div>
             <div class="card">
@@ -282,6 +322,22 @@
 
     <script>
       document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Psychologist",
+        "name": "Saba Fiorentini",
+        "url": "https://www.sabafiorentinipsicologa.it/",
+        "image": "https://www.sabafiorentinipsicologa.it/assets/saba-fiorentini.png",
+        "email": "sabafiorentini.psi@gmail.com",
+        "areaServed": ["Cremona", "Online"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cremona",
+          "addressCountry": "IT"
+        }
+      }
     </script>
   </body>
 </html>

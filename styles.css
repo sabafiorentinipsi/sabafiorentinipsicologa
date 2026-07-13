@@ -339,6 +339,65 @@ a {
   flex-wrap: wrap;
 }
 
+.btn--disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.form {
+  margin-top: 14px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field span {
+  color: var(--muted-2);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(11, 18, 32, 0.55);
+  color: var(--text);
+  padding: 11px 12px;
+  font: inherit;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgba(96, 165, 250, 0.5);
+}
+
+.form-note {
+  margin: 12px 0 0;
+  color: var(--muted-2);
+  font-size: 0.92rem;
+}
+
 .cta-card {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: var(--card-strong);
@@ -425,6 +484,9 @@ a {
 @media (max-width: 720px) {
   .grid--two,
   .grid--three {
+    grid-template-columns: 1fr;
+  }
+  .form-grid {
     grid-template-columns: 1fr;
   }
   .header-inner {

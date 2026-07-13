@@ -14,6 +14,7 @@
   --radius: 18px;
   --radius-sm: 14px;
   --container: 1120px;
+  --header-height: 72px;
 }
 
 *,
@@ -24,6 +25,11 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+section[id] {
+  scroll-margin-top: var(--header-height);
 }
 
 body {
@@ -136,6 +142,12 @@ a {
   user-select: none;
 }
 
+button.btn {
+  font: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
 .btn:active {
   transform: translateY(1px);
 }
@@ -158,6 +170,24 @@ a {
 .btn--ghost:hover {
   background: #ffffff;
   border-color: rgba(60, 50, 40, 0.2);
+}
+
+.btn--whatsapp {
+  border-color: #1faa52;
+  background: #25d366;
+  color: #ffffff;
+}
+
+.btn--whatsapp:hover {
+  border-color: #1faa52;
+  background: #1faa52;
+  color: #ffffff;
+}
+
+.btn__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .hero {

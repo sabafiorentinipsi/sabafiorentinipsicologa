@@ -270,6 +270,12 @@ button.btn {
   color: var(--accent);
 }
 
+.eyebrow__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
 .hero h1 {
   margin: 0 0 14px;
   font-size: clamp(2rem, 3.4vw, 3.15rem);
@@ -297,6 +303,20 @@ button.btn {
   display: grid;
   gap: 10px;
   color: var(--muted-2);
+}
+
+.hero-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.hero-highlights__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent);
 }
 
 .hero-highlights strong {
@@ -362,6 +382,64 @@ button.btn {
   color: var(--muted);
 }
 
+.section-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.section-layout--reverse .section-visual {
+  order: -1;
+}
+
+.section-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
+
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.card-icon--small {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 0;
+  border-radius: 12px;
+}
+
+.card-icon--small svg {
+  width: 18px;
+  height: 18px;
+}
+
+.cta-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cta-card__header .cta-card__kicker {
+  margin: 0;
+}
+
 .grid {
   display: grid;
   gap: 14px;
@@ -399,6 +477,29 @@ button.btn {
   background: linear-gradient(135deg, rgba(107, 143, 113, 0.1), rgba(143, 168, 143, 0.06));
   border-radius: var(--radius-sm);
   padding: 16px;
+}
+
+.callout--icon {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.callout-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--accent);
+}
+
+.callout-icon svg {
+  width: 22px;
+  height: 22px;
 }
 
 .callout__title {
@@ -757,6 +858,20 @@ textarea:focus {
 
   .hero-inner {
     grid-template-columns: 1fr;
+  }
+
+  .section-layout,
+  .section-layout--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .section-layout--reverse .section-visual {
+    order: 0;
+  }
+
+  .section-visual {
+    max-width: 360px;
+    margin: 0 auto;
   }
 
   .cta {

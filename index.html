@@ -25,6 +25,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -64,7 +65,10 @@
       <section class="hero" id="top">
         <div class="container hero-inner">
           <div class="hero-copy">
-            <p class="eyebrow">Sostegno psicologico online</p>
+            <p class="eyebrow">
+              <svg class="eyebrow__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+              Sostegno psicologico online
+            </p>
             <h1>Uno spazio di ascolto per ritrovare chiarezza e risorse.</h1>
             <p class="lead">
               Mi chiamo <strong>Saba Fiorentini</strong> e sono una psicologa,
@@ -83,12 +87,17 @@
             </div>
 
             <ul class="hero-highlights" aria-label="Informazioni principali">
-              <li><strong>Online</strong> · continuità e flessibilità</li>
               <li>
-                <strong>Per</strong> adolescenti, giovani adulti, adulti e coppie
+                <svg class="hero-highlights__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 19h8M12 17v2"/></svg>
+                <span><strong>Online</strong> · continuità e flessibilità</span>
               </li>
               <li>
-                <strong>Obiettivo</strong> · maggiore consapevolezza e benessere
+                <svg class="hero-highlights__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="10" cy="8" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                <span><strong>Per</strong> adolescenti, giovani adulti, adulti e coppie</span>
+              </li>
+              <li>
+                <svg class="hero-highlights__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+                <span><strong>Obiettivo</strong> · maggiore consapevolezza e benessere</span>
               </li>
             </ul>
           </div>
@@ -115,36 +124,49 @@
 
       <section class="section" id="chi-sono">
         <div class="container">
-          <div class="section-head">
-            <h2>Chi sono</h2>
-            <p>
-              Formazione clinica e interesse per la narrazione autobiografica,
-              con uno sguardo attento a come le persone sentono, si relazionano e
-              si raccontano.
-            </p>
-          </div>
+          <div class="section-layout">
+            <div class="section-layout__content">
+              <div class="section-head">
+                <h2>Chi sono</h2>
+                <p>
+                  Formazione clinica e interesse per la narrazione autobiografica,
+                  con uno sguardo attento a come le persone sentono, si relazionano e
+                  si raccontano.
+                </p>
+              </div>
 
-          <div class="grid grid--two">
-            <div class="card">
-              <h3>Formazione</h3>
-              <p>
-                Laureata con lode in Psicologia Clinica all’Università degli
-                Studi di Bergamo, con una tesi dal titolo
-                <em
-                  >“Ragionamento autobiografico e narrazione autobiografica nella
-                  costruzione del Sé”</em
-                >.
-              </p>
+              <div class="grid grid--two">
+                <div class="card card--icon">
+                  <div class="card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-6 10 6-10 6-10-6z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg>
+                  </div>
+                  <h3>Formazione</h3>
+                  <p>
+                    Laureata con lode in Psicologia Clinica all’Università degli
+                    Studi di Bergamo, con una tesi dal titolo
+                    <em
+                      >“Ragionamento autobiografico e narrazione autobiografica nella
+                      costruzione del Sé”</em
+                    >.
+                  </p>
+                </div>
+
+                <div class="card card--icon">
+                  <div class="card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a4 4 0 117 0 4 4 0 117 0c0 5.5-7 10-7 10z"/><path d="M12 7v4l2 2"/></svg>
+                  </div>
+                  <h3>Esperienza</h3>
+                  <p>
+                    Tirocinio post-laurea presso un consultorio familiare a Milano.
+                    Ho potuto osservare come l’attività clinica cambia a seconda che
+                    la richiesta arrivi dalla singola persona, dalla coppia o dalla
+                    famiglia: un’esperienza significativa e professionalizzante.
+                  </p>
+                </div>
+              </div>
             </div>
-
-            <div class="card">
-              <h3>Esperienza</h3>
-              <p>
-                Tirocinio post-laurea presso un consultorio familiare a Milano.
-                Ho potuto osservare come l’attività clinica cambia a seconda che
-                la richiesta arrivi dalla singola persona, dalla coppia o dalla
-                famiglia: un’esperienza significativa e professionalizzante.
-              </p>
+            <div class="section-visual" aria-hidden="true">
+              <img src="./assets/wellness-leaves.svg" alt="" width="400" height="320" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -162,21 +184,30 @@
           </div>
 
           <div class="grid grid--three">
-            <div class="card">
+            <div class="card card--icon">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+              </div>
               <h3>Consapevolezza</h3>
               <p>
                 Dare significato a ciò che stai vivendo e riconoscere cosa ti
                 sta mettendo in difficoltà.
               </p>
             </div>
-            <div class="card">
+            <div class="card card--icon">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
               <h3>Risorse personali</h3>
               <p>
                 Individuare e potenziare le tue risorse per affrontare una fase
                 complessa o una situazione di sofferenza.
               </p>
             </div>
-            <div class="card">
+            <div class="card card--icon">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
               <h3>Benessere</h3>
               <p>
                 Lavorare in un’ottica di miglioramento della qualità della vita
@@ -185,39 +216,57 @@
             </div>
           </div>
 
-          <div class="callout">
-            <p class="callout__title">Mi rivolgo a</p>
-            <p class="callout__body">
-              Adolescenti, giovani adulti, adulti e coppie.
-            </p>
+          <div class="callout callout--icon">
+            <div class="callout-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="10" cy="8" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <p class="callout__title">Mi rivolgo a</p>
+              <p class="callout__body">
+                Adolescenti, giovani adulti, adulti e coppie.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="section" id="online">
         <div class="container">
-          <div class="section-head">
-            <h2>Attività online</h2>
-            <p>
-              Attualmente svolgo la mia attività online: una modalità utile per
-              mantenere continuità e flessibilità, ovunque tu sia.
-            </p>
-          </div>
+          <div class="section-layout section-layout--reverse">
+            <div class="section-layout__content">
+              <div class="section-head">
+                <h2>Attività online</h2>
+                <p>
+                  Attualmente svolgo la mia attività online: una modalità utile per
+                  mantenere continuità e flessibilità, ovunque tu sia.
+                </p>
+              </div>
 
-          <div class="grid grid--two">
-            <div class="card">
-              <h3>Un primo contatto semplice</h3>
-              <p>
-                Puoi scrivermi su WhatsApp o via email. Nel messaggio indica
-                brevemente cosa stai vivendo e la fascia oraria che preferisci.
-              </p>
+              <div class="grid grid--two">
+                <div class="card card--icon">
+                  <div class="card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  </div>
+                  <h3>Un primo contatto semplice</h3>
+                  <p>
+                    Puoi scrivermi su WhatsApp o via email. Nel messaggio indica
+                    brevemente cosa stai vivendo e la fascia oraria che preferisci.
+                  </p>
+                </div>
+                <div class="card card--icon">
+                  <div class="card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  </div>
+                  <h3>Colloquio conoscitivo</h3>
+                  <p>
+                    Un primo incontro per inquadrare la situazione e capire se questo
+                    spazio può essere utile per te.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="card">
-              <h3>Colloquio conoscitivo</h3>
-              <p>
-                Un primo incontro per inquadrare la situazione e capire se questo
-                spazio può essere utile per te.
-              </p>
+            <div class="section-visual">
+              <img src="./assets/online-session.svg" alt="Illustrazione di un colloquio psicologico online" width="480" height="360" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -268,7 +317,12 @@
               </form>
             </div>
             <div class="cta-card">
-              <p class="cta-card__kicker">Contatti rapidi</p>
+              <div class="cta-card__header">
+                <div class="card-icon card-icon--small" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <p class="cta-card__kicker">Contatti rapidi</p>
+              </div>
               <ul class="cta-card__list">
                 <li>
                   <span>WhatsApp</span>

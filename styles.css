@@ -576,7 +576,15 @@ textarea:focus {
   background: #ffffff;
 }
 
+.mobile-dock {
+  display: none;
+}
+
 @media (max-width: 920px) {
+  :root {
+    --mobile-dock-height: 76px;
+  }
+
   .nav-toggle {
     display: inline-flex;
   }
@@ -619,18 +627,82 @@ textarea:focus {
   }
 
   .cta {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+    display: block;
   }
 
   .cta-card {
-    order: -1;
+    display: none;
   }
 
-  #prenota {
+  #prenota,
+  #contatti {
     min-height: auto;
     overflow-y: visible;
+    padding-bottom: calc(24px + var(--mobile-dock-height, 76px));
+  }
+
+  .mobile-dock {
+    display: grid;
+    grid-template-columns: 1.45fr 1fr;
+    gap: 8px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    padding: 10px 16px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(250, 248, 245, 0.96);
+    border-top: 1px solid var(--stroke);
+    box-shadow: 0 -8px 24px rgba(60, 50, 40, 0.1);
+    transform: translateY(110%);
+    transition: transform 220ms ease;
+    pointer-events: none;
+  }
+
+  .mobile-dock.is-visible {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .mobile-dock__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+    line-height: 1.2;
+    text-align: center;
+    border: none;
+  }
+
+  .mobile-dock__btn--whatsapp {
+    background: #2d6a6a;
+    color: #ffffff;
+  }
+
+  .mobile-dock__btn--whatsapp:hover {
+    background: #245656;
+  }
+
+  .mobile-dock__btn--email {
+    background: #a67c52;
+    color: #ffffff;
+  }
+
+  .mobile-dock__btn--email:hover {
+    background: #8f6844;
+  }
+
+  .mobile-dock__btn .btn__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
 }
 

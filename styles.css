@@ -790,11 +790,17 @@ textarea:focus {
   }
 
   body.dock-visible .footer-back-top {
-    display: none;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
   }
 
-  body.dock-visible .site-footer {
-    display: none;
+  #prenota {
+    min-height: calc(100dvh - var(--header-height));
+    overflow-y: visible;
+    scroll-snap-align: none;
+    padding-bottom: calc(32px + var(--mobile-dock-height, 76px));
   }
 
   .footer-back-top__link {
@@ -888,12 +894,6 @@ textarea:focus {
 
   .cta-card {
     display: none;
-  }
-
-  #prenota {
-    min-height: auto;
-    overflow-y: visible;
-    padding-bottom: calc(32px + var(--mobile-dock-height, 76px));
   }
 
   .mobile-dock {

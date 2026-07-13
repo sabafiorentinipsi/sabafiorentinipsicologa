@@ -480,25 +480,36 @@
       const footerSection = document.querySelector(".site-footer");
 
       if (mobileDock && prenotaSection && footerSection) {
+        let dockShown = false;
+
         const updateDock = () => {
           const isMobile = window.matchMedia("(max-width: 920px)").matches;
           if (!isMobile) {
-            mobileDock.classList.remove("is-visible");
-            document.body.classList.remove("dock-visible");
-            mobileDock.setAttribute("aria-hidden", "true");
+            if (dockShown) {
+              dockShown = false;
+              mobileDock.classList.remove("is-visible");
+              document.body.classList.remove("dock-visible");
+              mobileDock.setAttribute("aria-hidden", "true");
+            }
             return;
           }
 
-          const prenotaRect = prenotaSection.getBoundingClientRect();
-          const footerRect = footerSection.getBoundingClientRect();
+          const scrollY = window.scrollY;
+          const viewportHeight = window.innerHeight;
+          const prenotaTop = prenotaSection.offsetTop;
+          const prenotaBottom = prenotaTop + prenotaSection.offsetHeight;
+          const viewportBottom = scrollY + viewportHeight;
 
           const inPrenota =
-            prenotaRect.top < window.innerHeight * 0.85 && prenotaRect.bottom > 96;
+            viewportBottom > prenotaTop + 120 && scrollY < prenotaBottom - 80;
 
-          const inFooter = footerRect.top < window.innerHeight * 0.55;
+          const inFooter = viewportBottom > prenotaBottom + 24;
 
           const show = inPrenota && !inFooter;
 
+          if (show === dockShown) return;
+
+          dockShown = show;
           mobileDock.classList.toggle("is-visible", show);
           document.body.classList.toggle("dock-visible", show);
           mobileDock.setAttribute("aria-hidden", String(!show));

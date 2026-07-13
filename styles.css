@@ -550,7 +550,7 @@ textarea:focus {
 .site-footer {
   background: #2c3e44;
   color: rgba(255, 255, 255, 0.88);
-  scroll-snap-align: start;
+  scroll-snap-align: none;
 }
 
 .footer-grid {
@@ -597,6 +597,7 @@ textarea:focus {
 .footer-links a {
   color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
 .footer-links a:hover {
@@ -637,6 +638,13 @@ textarea:focus {
 
 .footer-bottom__inner p {
   margin: 0;
+}
+
+.footer-bottom__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  line-height: 1.5;
 }
 
 .footer-bottom__link {
@@ -782,17 +790,53 @@ textarea:focus {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px 16px;
-    padding: 36px 0 28px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 40px 0 32px;
   }
 
   .footer-brand {
-    grid-column: 1 / -1;
+    grid-column: auto;
+  }
+
+  .footer-brand__name {
+    font-size: 1.5rem;
   }
 
   .footer-brand__text {
     max-width: none;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .footer-col__title {
+    font-size: 0.82rem;
+    margin-bottom: 12px;
+  }
+
+  .footer-links {
+    gap: 12px;
+    font-size: 1rem;
+  }
+
+  .footer-links--icons li {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .footer-bottom__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0 calc(24px + env(safe-area-inset-bottom, 0px));
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .footer-bottom__link {
+    width: 100%;
+    text-align: center;
+    padding: 12px 14px;
   }
 }
 
@@ -825,10 +869,5 @@ textarea:focus {
 
   #prenota textarea {
     min-height: 96px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
   }
 }

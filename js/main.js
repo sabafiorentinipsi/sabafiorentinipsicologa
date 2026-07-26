@@ -143,12 +143,190 @@
     updateDock();
   }
 
+  /**
+   * Formatta una data ISO in italiano (es. 14 luglio 2026).
+   */
+  function formatDate(isoDate) {
+    if (!isoDate) return "";
+    const date = new Date(`${isoDate}T12:00:00`);
+    if (Number.isNaN(date.getTime())) return isoDate;
+    return date.toLocaleDateString("it-IT", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  }
+
+  /**
+   * Escape HTML per evitare injection quando si renderizzano i post dal JSON.
+   */
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  /**
+   * Converte i paragrafi del JSON in HTML.
+   * Le stringhe che iniziano con "## " diventano sottotitoli.
+   */
+  function renderContentBlocks(blocks) {
+    return (blocks || [])
+      .map((block) => {
+        const text = String(block).trim();
+        if (!text) return "";
+        if (text.startsWith("## ")) {
+          return `<h3>${escapeHtml(text.slice(3))}</h3>`;
+        }
+        return `<p>${escapeHtml(text)}</p>`;
+      })
+      .join("");
+  }
+
+  /**
+   * Carica i post da data/posts.json e gestisce apertura/chiusura articolo.
+   * Per aggiungere un post: modifica solo il file JSON.
+   */
+  function initPosts() {
+    const listElement = document.querySelector(CONFIG.selectors.postsList);
+    const dialog = document.querySelector(CONFIG.selectors.postDialog);
+    if (!listElement || !dialog) return;
+
+    const dialogTitle = dialog.querySelector("[data-post-title]");
+    const dialogSubtitle = dialog.querySelector("[data-post-subtitle]");
+    const dialogDate = dialog.querySelector("[data-post-date]");
+    const dialogBody = dialog.querySelector("[data-post-body]");
+    const dialogSources = dialog.querySelector("[data-post-sources]");
+    const closeButtons = dialog.querySelectorAll("[data-post-close]");
+
+    let posts = [];
+
+    const closePost = () => {
+      dialog.classList.remove("is-open");
+      dialog.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("post-open");
+      if (window.location.hash.startsWith("#post/")) {
+        history.replaceState(null, "", "#approfondimenti");
+      }
+    };
+
+    const openPost = (postId) => {
+      const post = posts.find((item) => item.id === postId);
+      if (!post) return;
+
+      dialogTitle.textContent = post.title;
+      dialogSubtitle.textContent = post.subtitle || "";
+      dialogSubtitle.hidden = !post.subtitle;
+      dialogDate.textContent = formatDate(post.date);
+      dialogBody.innerHTML = renderContentBlocks(post.content);
+
+      if (post.sources && post.sources.length) {
+        dialogSources.innerHTML = `
+          <h4>Fonti bibliografiche</h4>
+          <ul>
+            ${post.sources.map((source) => `<li>${escapeHtml(source)}</li>`).join("")}
+          </ul>
+        `;
+        dialogSources.hidden = false;
+      } else {
+        dialogSources.innerHTML = "";
+        dialogSources.hidden = true;
+      }
+
+      dialog.classList.add("is-open");
+      dialog.setAttribute("aria-hidden", "false");
+      document.body.classList.add("post-open");
+
+      const expectedHash = `#post/${post.id}`;
+      if (window.location.hash !== expectedHash) {
+        history.replaceState(null, "", expectedHash);
+      }
+    };
+
+    const renderList = () => {
+      if (!posts.length) {
+        listElement.innerHTML =
+          '<p class="posts-empty">Presto verranno pubblicati nuovi approfondimenti.</p>';
+        return;
+      }
+
+      listElement.innerHTML = posts
+        .map(
+          (post) => `
+          <article class="post-card">
+            <p class="post-card__date">${escapeHtml(formatDate(post.date))}</p>
+            <h3 class="post-card__title">${escapeHtml(post.title)}</h3>
+            <p class="post-card__excerpt">${escapeHtml(post.excerpt || "")}</p>
+            <button class="btn btn--ghost post-card__btn" type="button" data-post-id="${escapeHtml(post.id)}">
+              Leggi l'articolo
+            </button>
+          </article>
+        `
+        )
+        .join("");
+    };
+
+    const openFromHash = () => {
+      const match = window.location.hash.match(/^#post\/(.+)$/);
+      if (match) openPost(decodeURIComponent(match[1]));
+    };
+
+    listElement.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-post-id]");
+      if (!button) return;
+      openPost(button.getAttribute("data-post-id"));
+    });
+
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", closePost);
+    });
+
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) closePost();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && dialog.classList.contains("is-open")) {
+        closePost();
+      }
+    });
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash.startsWith("#post/")) {
+        openFromHash();
+      } else if (dialog.classList.contains("is-open")) {
+        dialog.classList.remove("is-open");
+        dialog.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("post-open");
+      }
+    });
+
+    fetch(CONFIG.postsUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error("Impossibile caricare i post");
+        return response.json();
+      })
+      .then((data) => {
+        posts = Array.isArray(data.posts) ? data.posts : [];
+        renderList();
+        openFromHash();
+      })
+      .catch(() => {
+        listElement.innerHTML =
+          '<p class="posts-empty">I contenuti non sono al momento disponibili.</p>';
+      });
+  }
+
   /** Avvio moduli quando il DOM è pronto. */
   function bootstrap() {
     document.documentElement.classList.remove("no-js");
     initFooterYear();
     initMobileNav();
     initMobileDock();
+    initPosts();
   }
 
   if (document.readyState === "loading") {

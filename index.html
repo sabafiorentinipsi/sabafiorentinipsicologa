@@ -37,9 +37,9 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="./assets/favicon.png?v=3" type="image/png" sizes="192x192" />
-    <link rel="icon" href="./assets/favicon.svg?v=3" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="./assets/favicon.png?v=3" />
+    <link rel="icon" href="./assets/favicon.png?v=4" type="image/png" sizes="192x192" />
+    <link rel="icon" href="./assets/favicon.svg?v=4" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/favicon.png?v=4" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -58,6 +58,7 @@
           <a href="#chi-sono">Chi sono</a>
           <a href="#cosa-offro">Cosa offro</a>
           <a href="#online">Online</a>
+          <a href="#approfondimenti">Approfondimenti</a>
         </nav>
 
         <div class="header-actions">
@@ -246,6 +247,71 @@
               </p>
             </div>
           </div>
+
+          <div class="session-info">
+            <div class="section-head section-head--nested">
+              <h3>La durata della seduta</h3>
+              <p>
+                Il tempo dell’incontro definisce il setting: una cornice chiara
+                che tutela lo spazio emotivo e rende il lavoro clinico efficace.
+              </p>
+            </div>
+
+            <div class="grid grid--two">
+              <article class="card session-card">
+                <p class="session-card__label">Colloquio individuale</p>
+                <h4 class="session-card__duration">50–55 minuti</h4>
+                <p>
+                  Questo tempo definisce il setting, cioè la cornice di regole
+                  che garantisce efficacia, sicurezza e tutela dello spazio
+                  emotivo della persona.
+                </p>
+                <p>
+                  La durata dell’incontro non è una scelta casuale, ma risponde
+                  ai limiti naturali dell’attenzione e della tolleranza allo
+                  stress, evitando il sovraccarico mentale e favorendo una
+                  partecipazione piena e consapevole. Tale impostazione
+                  distingue profondamente la seduta clinica da una semplice
+                  chiacchierata informale.
+                </p>
+                <p>
+                  Mentre uno scambio tra amici è spontaneo, privo di scopi
+                  specifici e libero da vincoli, l’incontro clinico si svolge
+                  entro un tempo definito e orientato a precisi obiettivi di
+                  comprensione, sostegno e consapevolezza. Tale delimitazione
+                  temporale contribuisce a mantenere l’attenzione focalizzata
+                  sul percorso della persona, rendendo ogni minuto funzionale
+                  al lavoro psicologico.
+                </p>
+              </article>
+
+              <article class="card session-card">
+                <p class="session-card__label">Colloquio di coppia</p>
+                <h4 class="session-card__duration">60–75 minuti</h4>
+                <p>
+                  Questo perimetro orario definisce il setting: uno spazio
+                  protetto e regolato che assicura l’efficacia dell’intervento
+                  e salvaguarda l’equilibrio emotivo di entrambi i partner.
+                </p>
+                <p>
+                  Proprio questa struttura distingue nettamente l’incontro
+                  clinico dalle discussioni domestiche o dagli sfoghi
+                  informali. Se il conflitto a casa è spesso caotico, privo di
+                  mediazione e senza limiti temporali, l’incontro professionale
+                  si svolge entro confini ben definiti, con uno spazio
+                  equamente distribuito e orientato a precisi obiettivi:
+                  comprensione reciproca, sintonizzazione emotiva e gestione
+                  della crisi.
+                </p>
+                <p>
+                  In questo modo si mantiene l’attenzione sui punti critici del
+                  rapporto, evitando che lo scambio diventi distruttivo e
+                  trasformando ogni momento in un tassello utile alla
+                  riparazione del legame.
+                </p>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -292,8 +358,24 @@
         </div>
       </section>
 
+      <!-- Approfondimenti: contenuti caricati da data/posts.json -->
+      <section class="section section--alt" id="approfondimenti">
+        <div class="container">
+          <div class="section-head">
+            <h2>Approfondimenti</h2>
+            <p>
+              Riflessioni su autostima, relazioni e benessere psicologico, con
+              riferimenti alla ricerca scientifica.
+            </p>
+          </div>
+          <div class="posts-grid" id="posts-list" aria-live="polite">
+            <p class="posts-empty">Caricamento articoli…</p>
+          </div>
+        </div>
+      </section>
+
       <!-- Prenota: form contatti (FormSubmit) + contatti rapidi desktop -->
-      <section class="section section--alt" id="prenota">
+      <section class="section" id="prenota">
         <div class="container">
           <div class="cta">
             <div class="cta-copy">
@@ -399,6 +481,7 @@
             <li><a href="#chi-sono">Chi sono</a></li>
             <li><a href="#cosa-offro">Cosa offro</a></li>
             <li><a href="#online">Online</a></li>
+            <li><a href="#approfondimenti">Approfondimenti</a></li>
             <li><a href="#prenota">Prenota</a></li>
           </ul>
         </div>
@@ -451,6 +534,24 @@
         </div>
       </div>
     </footer>
+
+    <!-- Lettura articolo (contenuto da posts.json) -->
+    <div class="post-dialog" id="post-dialog" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="post-dialog-title">
+      <div class="post-dialog__panel">
+        <button class="post-dialog__close" type="button" data-post-close aria-label="Chiudi articolo">
+          ×
+        </button>
+        <p class="post-dialog__date" data-post-date></p>
+        <h2 class="post-dialog__title" id="post-dialog-title" data-post-title></h2>
+        <p class="post-dialog__subtitle" data-post-subtitle></p>
+        <div class="post-dialog__body" data-post-body></div>
+        <div class="post-dialog__sources" data-post-sources hidden></div>
+        <div class="post-dialog__actions">
+          <a class="btn btn--primary" href="#prenota" data-post-close>Prenota un colloquio</a>
+          <button class="btn btn--ghost" type="button" data-post-close>Chiudi</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Barra contatti fissa su mobile (visibile solo in sezione Prenota) -->
     <div class="mobile-dock" aria-hidden="true">

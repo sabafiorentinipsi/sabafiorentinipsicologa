@@ -15,7 +15,12 @@ window.SITE_CONFIG = {
     prenotaSection: "#prenota",
     footer: ".site-footer",
     prenotaLinks: 'a[href="#prenota"]',
+    postsList: "#posts-list",
+    postDialog: "#post-dialog",
   },
+
+  /** Percorso del file JSON dei post (modificabile senza DB). */
+  postsUrl: "./data/posts.json",
 
   /** Ritardi (ms) per sincronizzare UI dopo scroll o cambio hash. */
   timing: {

@@ -530,6 +530,48 @@ button.btn {
   color: var(--muted);
 }
 
+.session-info {
+  margin-top: 28px;
+}
+
+.section-head--nested {
+  margin-bottom: 16px;
+}
+
+.section-head--nested h3 {
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+  font-size: 1.35rem;
+}
+
+.section-head--nested p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.session-card__label {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.session-card__duration {
+  margin: 0 0 14px;
+  font-size: 1.45rem;
+  letter-spacing: -0.03em;
+}
+
+.session-card p {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.session-card p:last-child {
+  margin-bottom: 0;
+}
+
 .cta {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -815,6 +857,162 @@ textarea:focus {
 }
 
 /* ==========================================================================
+   Approfondimenti (post da data/posts.json)
+   ========================================================================== */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.posts-empty {
+  margin: 0;
+  color: var(--muted);
+}
+
+.post-card {
+  border: 1px solid var(--stroke);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.post-card__date {
+  margin: 0;
+  color: var(--muted-2);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.post-card__title {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
+.post-card__excerpt {
+  margin: 0;
+  color: var(--muted);
+  flex: 1;
+}
+
+.post-card__btn {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+body.post-open {
+  overflow: hidden;
+}
+
+.post-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: calc(var(--header-height) + 16px) 16px 24px;
+  background: rgba(44, 40, 36, 0.45);
+  overflow-y: auto;
+}
+
+.post-dialog.is-open {
+  display: flex;
+}
+
+.post-dialog__panel {
+  width: min(760px, 100%);
+  background: #ffffff;
+  border-radius: var(--radius);
+  padding: 28px 24px 24px;
+  box-shadow: 0 24px 60px rgba(44, 40, 36, 0.22);
+  position: relative;
+}
+
+.post-dialog__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.post-dialog__close:hover {
+  color: var(--text);
+}
+
+.post-dialog__date {
+  margin: 0 0 8px;
+  color: var(--muted-2);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.post-dialog__title {
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  padding-right: 28px;
+}
+
+.post-dialog__subtitle {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.post-dialog__body h3 {
+  margin: 22px 0 8px;
+  font-size: 1.05rem;
+}
+
+.post-dialog__body p {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.post-dialog__sources {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--stroke);
+}
+
+.post-dialog__sources h4 {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+}
+
+.post-dialog__sources ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted-2);
+  font-size: 0.88rem;
+}
+
+.post-dialog__sources li {
+  margin-bottom: 6px;
+}
+
+.post-dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+/* ==========================================================================
    Responsive — tablet e mobile (max-width: 920px)
    ========================================================================== */
 @media (max-width: 920px) {
@@ -932,6 +1130,10 @@ textarea:focus {
 
   .cta {
     display: block;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
   }
 
   .cta-card {

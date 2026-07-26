@@ -421,13 +421,15 @@
               </p>
               <form
                 class="form"
+                id="contact-form"
                 action="https://formsubmit.co/sabafiorentini.psi@gmail.com"
                 method="POST"
               >
                 <input type="hidden" name="_subject" value="Richiesta dal sito - Saba Fiorentini" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_next" value="https://www.sabafiorentinipsicologa.it/grazie.html" />
+                <input type="hidden" name="_next" value="./grazie.html" />
+                <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="honey" aria-hidden="true" />
 
                 <div class="form-grid">
                   <label class="field">
@@ -454,14 +456,15 @@
                 </label>
 
                 <div class="cta-actions">
-                  <button class="btn btn--submit" type="submit">
+                  <button class="btn btn--submit" type="submit" id="contact-submit">
                     <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                       <path d="M22 2L11 13" />
                       <path d="M22 2L15 22l-4-9-9-4 20-7z" />
                     </svg>
-                    Invia richiesta
+                    <span data-submit-label>Invia richiesta</span>
                   </button>
                 </div>
+                <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
               </form>
             </div>
             <div class="cta-card">

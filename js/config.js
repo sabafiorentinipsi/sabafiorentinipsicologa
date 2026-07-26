@@ -20,10 +20,16 @@ window.SITE_CONFIG = {
     cookieBanner: "#cookie-banner",
     cookiePanel: "#cookie-panel",
     cookiePreferences: "#cookie-preferences",
+    contactForm: "#contact-form",
+    formStatus: "#form-status",
   },
 
   /** Percorso del file JSON dei post (modificabile senza DB). */
   postsUrl: "./data/posts.json",
+
+  /** Endpoint AJAX FormSubmit e pagina di conferma. */
+  formSubmitAjaxUrl: "https://formsubmit.co/ajax/sabafiorentini.psi@gmail.com",
+  thankYouUrl: "./grazie.html",
 
   /** Chiave localStorage per le preferenze cookie. */
   cookieStorageKey: "sf_cookie_prefs_v1",

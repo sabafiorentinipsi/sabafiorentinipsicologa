@@ -385,6 +385,60 @@
       });
   }
 
+  /**
+   * Invia la form contatti via AJAX a FormSubmit e reindirizza a grazie.html.
+   * Evita errori di redirect HTTPS/DNS lato FormSubmit.
+   */
+  function initContactForm() {
+    const form = document.querySelector(CONFIG.selectors.contactForm);
+    const status = document.querySelector(CONFIG.selectors.formStatus);
+    if (!form) return;
+
+    const submitButton = form.querySelector('[type="submit"]');
+    const label = form.querySelector("[data-submit-label]");
+
+    const setStatus = (message, isError) => {
+      if (!status) return;
+      status.hidden = !message;
+      status.textContent = message || "";
+      status.classList.toggle("form-status--error", Boolean(isError));
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setStatus("");
+
+      if (!form.reportValidity()) return;
+
+      const formData = new FormData(form);
+      formData.delete("_next");
+
+      if (submitButton) submitButton.disabled = true;
+      if (label) label.textContent = "Invio in corso…";
+
+      try {
+        const response = await fetch(CONFIG.formSubmitAjaxUrl, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" },
+        });
+
+        if (!response.ok) {
+          throw new Error("Invio non riuscito");
+        }
+
+        window.location.assign(CONFIG.thankYouUrl);
+      } catch (error) {
+        setStatus(
+          "Non è stato possibile inviare la richiesta. Riprova tra poco oppure scrivimi via email.",
+          true
+        );
+        if (submitButton) submitButton.disabled = false;
+        if (label) label.textContent = "Invia richiesta";
+      }
+    });
+  }
+
   /** Avvio moduli quando il DOM è pronto. */
   function bootstrap() {
     document.documentElement.classList.remove("no-js");
@@ -393,6 +447,7 @@
     initMobileDock();
     initPosts();
     initCookieBanner();
+    initContactForm();
   }
 
   if (document.readyState === "loading") {

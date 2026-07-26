@@ -702,6 +702,26 @@ textarea:focus {
   font-size: 0.92rem;
 }
 
+.form-status {
+  margin: 12px 0 0;
+  text-align: center;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.form-status--error {
+  color: #9a3b2f;
+}
+
+.honey {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
 .cta-card {
   border: 1px solid var(--stroke);
   background: var(--card-strong);

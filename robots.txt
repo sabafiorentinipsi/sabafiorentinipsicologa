@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Allow: /data/posts.json
+Allow: /assets/
 
 # Pagina di conferma form: non indicizzare
 Disallow: /grazie.html

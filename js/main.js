@@ -225,10 +225,12 @@
 
       if (post.sources && post.sources.length) {
         dialogSources.innerHTML = `
-          <h4>Fonti bibliografiche</h4>
-          <ul>
-            ${post.sources.map((source) => `<li>${escapeHtml(source)}</li>`).join("")}
-          </ul>
+          <h4>Riferimenti bibliografici</h4>
+          <ol class="post-sources-list">
+            ${post.sources
+              .map((source, index) => `<li id="source-${index + 1}">${escapeHtml(source)}</li>`)
+              .join("")}
+          </ol>
         `;
         dialogSources.hidden = false;
       } else {

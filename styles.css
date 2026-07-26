@@ -994,7 +994,8 @@ body.post-open {
   font-size: 0.95rem;
 }
 
-.post-dialog__sources ul {
+.post-dialog__sources ul,
+.post-dialog__sources ol {
   margin: 0;
   padding-left: 18px;
   color: var(--muted-2);
@@ -1002,7 +1003,8 @@ body.post-open {
 }
 
 .post-dialog__sources li {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  line-height: 1.45;
 }
 
 .post-dialog__actions {

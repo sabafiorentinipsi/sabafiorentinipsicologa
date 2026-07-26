@@ -445,12 +445,23 @@
                   <textarea name="messaggio" rows="6" required></textarea>
                 </label>
 
+                <label class="consent">
+                  <input type="checkbox" name="privacy" value="accettata" required />
+                  <span>
+                    Ho letto e accetto la
+                    <a href="./privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+                  </span>
+                </label>
+
                 <div class="cta-actions">
-                  <button class="btn btn--primary" type="submit">Invia richiesta</button>
+                  <button class="btn btn--submit" type="submit">
+                    <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <path d="M22 2L11 13" />
+                      <path d="M22 2L15 22l-4-9-9-4 20-7z" />
+                    </svg>
+                    Invia richiesta
+                  </button>
                 </div>
-                <p class="form-note">
-                  Inviando la richiesta accetti che i dati siano usati solo per ricontattarti.
-                </p>
               </form>
             </div>
             <div class="cta-card">
@@ -563,6 +574,7 @@
           <p class="footer-bottom__copy">
             <span>© <span id="year"></span> Saba Fiorentini — Psicologa</span>
             <span>OPL Lombardia n. 32345 · P.IVA 01860740198</span>
+            <a href="./privacy.html">Privacy Policy</a>
           </p>
           <a class="footer-bottom__link" href="#top">Torna su</a>
         </div>
@@ -575,7 +587,6 @@
         <button class="post-dialog__close" type="button" data-post-close aria-label="Chiudi articolo">
           ×
         </button>
-        <p class="post-dialog__date" data-post-date></p>
         <h2 class="post-dialog__title" id="post-dialog-title" data-post-title></h2>
         <p class="post-dialog__subtitle" data-post-subtitle></p>
         <div class="post-dialog__body" data-post-body></div>
@@ -601,6 +612,46 @@
       <a class="mobile-dock__btn mobile-dock__btn--email" href="mailto:sabafiorentini.psi@gmail.com">
         Scrivimi
       </a>
+    </div>
+
+    </div>
+
+    <!-- Banner cookie e preferenze -->
+    <div class="cookie-banner" id="cookie-banner" hidden>
+      <div class="cookie-banner__inner">
+        <div class="cookie-banner__copy">
+          <p class="cookie-banner__title">Preferenze cookie</p>
+          <p>
+            Questo sito usa cookie tecnici necessari al funzionamento e, solo con il tuo consenso,
+            cookie di preferenza. Maggiori dettagli nella
+            <a href="./privacy.html#cookie">Privacy Policy</a>.
+          </p>
+        </div>
+        <div class="cookie-banner__actions">
+          <button class="btn btn--ghost cookie-banner__btn" type="button" data-cookie-action="necessary">
+            Solo necessari
+          </button>
+          <button class="btn btn--ghost cookie-banner__btn" type="button" data-cookie-action="customize">
+            Personalizza
+          </button>
+          <button class="btn btn--primary cookie-banner__btn" type="button" data-cookie-action="accept">
+            Accetta tutti
+          </button>
+        </div>
+        <div class="cookie-panel" id="cookie-panel" hidden>
+          <label class="cookie-option">
+            <input type="checkbox" checked disabled />
+            <span><strong>Necessari</strong> — essenziali per sicurezza, form e salvataggio delle tue scelte.</span>
+          </label>
+          <label class="cookie-option">
+            <input type="checkbox" id="cookie-preferences" />
+            <span><strong>Preferenze</strong> — ricordano impostazioni non essenziali del sito.</span>
+          </label>
+          <button class="btn btn--primary cookie-banner__btn" type="button" data-cookie-action="save">
+            Salva preferenze
+          </button>
+        </div>
+      </div>
     </div>
 
     <script src="./js/config.js" defer></script>

@@ -17,10 +17,16 @@ window.SITE_CONFIG = {
     prenotaLinks: 'a[href="#prenota"]',
     postsList: "#posts-list",
     postDialog: "#post-dialog",
+    cookieBanner: "#cookie-banner",
+    cookiePanel: "#cookie-panel",
+    cookiePreferences: "#cookie-preferences",
   },
 
   /** Percorso del file JSON dei post (modificabile senza DB). */
   postsUrl: "./data/posts.json",
+
+  /** Chiave localStorage per le preferenze cookie. */
+  cookieStorageKey: "sf_cookie_prefs_v1",
 
   /** Ritardi (ms) per sincronizzare UI dopo scroll o cambio hash. */
   timing: {

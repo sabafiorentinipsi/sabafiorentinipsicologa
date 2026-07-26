@@ -261,6 +261,26 @@ button.btn {
   flex-shrink: 0;
 }
 
+.btn--submit {
+  min-width: min(100%, 280px);
+  padding: 16px 28px;
+  font-size: 1.05rem;
+  border: none;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6b8f71, #557a5c);
+  box-shadow: 0 10px 24px rgba(107, 143, 113, 0.28);
+}
+
+.btn--submit:hover {
+  background: linear-gradient(135deg, #5f8266, #4c6d53);
+  box-shadow: 0 12px 28px rgba(107, 143, 113, 0.34);
+}
+
+.btn--submit .btn__icon {
+  width: 20px;
+  height: 20px;
+}
+
 /* ==========================================================================
    Hero — prima sezione above the fold
    ========================================================================== */
@@ -593,6 +613,30 @@ button.btn {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 16px 0 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.consent input {
+  width: auto;
+  margin-top: 4px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+
+.consent a {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .btn--disabled {
@@ -854,6 +898,149 @@ textarea:focus {
 
 .thank-you__actions {
   margin-top: 14px;
+}
+
+/* ==========================================================================
+   Privacy Policy e pagine legali
+   ========================================================================== */
+.legal-page {
+  justify-content: flex-start;
+  min-height: auto;
+  scroll-snap-align: none;
+}
+
+.legal-page__inner {
+  max-width: 760px;
+  padding: 24px 0 48px;
+}
+
+.legal-page h1 {
+  margin: 0 0 12px;
+  letter-spacing: -0.03em;
+}
+
+.legal-page__lead {
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+
+.legal-page h2 {
+  margin: 28px 0 10px;
+  font-size: 1.15rem;
+}
+
+.legal-page p,
+.legal-page li {
+  color: var(--muted);
+}
+
+.legal-page ul {
+  padding-left: 1.2em;
+}
+
+.legal-page__back {
+  margin-top: 36px;
+}
+
+/* ==========================================================================
+   Banner cookie
+   ========================================================================== */
+.cookie-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 90;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.cookie-banner[hidden] {
+  display: none !important;
+}
+
+.cookie-banner__inner {
+  background: #ffffff;
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 50px rgba(44, 40, 36, 0.18);
+  padding: 18px;
+}
+
+.cookie-banner__title {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.cookie-banner__copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.cookie-banner__copy a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.cookie-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.cookie-banner__btn {
+  flex: 1 1 auto;
+  min-height: 44px;
+}
+
+.cookie-panel {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--stroke);
+  display: grid;
+  gap: 12px;
+}
+
+.cookie-panel[hidden] {
+  display: none !important;
+}
+
+.cookie-option {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.cookie-option input {
+  width: auto;
+  margin-top: 3px;
+  accent-color: var(--accent);
+}
+
+.footer-bottom__copy a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.footer-bottom__copy a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 920px) {
+  .cookie-banner {
+    left: 10px;
+    right: 10px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .cookie-banner__actions {
+    flex-direction: column;
+  }
 }
 
 /* ==========================================================================

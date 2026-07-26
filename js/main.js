@@ -145,6 +145,7 @@
 
   /**
    * Formatta una data ISO in italiano (es. 14 luglio 2026).
+   * Mantenuta per eventuali usi futuri nei contenuti.
    */
   function formatDate(isoDate) {
     if (!isoDate) return "";
@@ -154,6 +155,71 @@
       day: "numeric",
       month: "long",
       year: "numeric",
+    });
+  }
+
+  /**
+   * Gestisce il banner cookie e salva le preferenze in localStorage.
+   */
+  function initCookieBanner() {
+    const banner = document.querySelector(CONFIG.selectors.cookieBanner);
+    const panel = document.querySelector(CONFIG.selectors.cookiePanel);
+    const preferencesInput = document.querySelector(CONFIG.selectors.cookiePreferences);
+    if (!banner) return;
+
+    const storageKey = CONFIG.cookieStorageKey;
+
+    const readPrefs = () => {
+      try {
+        return JSON.parse(localStorage.getItem(storageKey) || "null");
+      } catch (error) {
+        return null;
+      }
+    };
+
+    const savePrefs = (prefs) => {
+      localStorage.setItem(storageKey, JSON.stringify(prefs));
+      banner.hidden = true;
+      document.body.classList.remove("cookie-open");
+    };
+
+    const existing = readPrefs();
+    if (existing && existing.necessary) {
+      banner.hidden = true;
+      return;
+    }
+
+    banner.hidden = false;
+    document.body.classList.add("cookie-open");
+
+    banner.addEventListener("click", (event) => {
+      const action = event.target.closest("[data-cookie-action]");
+      if (!action) return;
+
+      const type = action.getAttribute("data-cookie-action");
+
+      if (type === "customize" && panel) {
+        panel.hidden = !panel.hidden;
+        return;
+      }
+
+      if (type === "necessary") {
+        savePrefs({ necessary: true, preferences: false, updatedAt: new Date().toISOString() });
+        return;
+      }
+
+      if (type === "accept") {
+        savePrefs({ necessary: true, preferences: true, updatedAt: new Date().toISOString() });
+        return;
+      }
+
+      if (type === "save") {
+        savePrefs({
+          necessary: true,
+          preferences: Boolean(preferencesInput && preferencesInput.checked),
+          updatedAt: new Date().toISOString(),
+        });
+      }
     });
   }
 
@@ -197,7 +263,6 @@
 
     const dialogTitle = dialog.querySelector("[data-post-title]");
     const dialogSubtitle = dialog.querySelector("[data-post-subtitle]");
-    const dialogDate = dialog.querySelector("[data-post-date]");
     const dialogBody = dialog.querySelector("[data-post-body]");
     const dialogSources = dialog.querySelector("[data-post-sources]");
     const closeButtons = dialog.querySelectorAll("[data-post-close]");
@@ -220,7 +285,6 @@
       dialogTitle.textContent = post.title;
       dialogSubtitle.textContent = post.subtitle || "";
       dialogSubtitle.hidden = !post.subtitle;
-      dialogDate.textContent = formatDate(post.date);
       dialogBody.innerHTML = renderContentBlocks(post.content);
 
       if (post.sources && post.sources.length) {
@@ -259,7 +323,6 @@
         .map(
           (post) => `
           <article class="post-card">
-            <p class="post-card__date">${escapeHtml(formatDate(post.date))}</p>
             <h3 class="post-card__title">${escapeHtml(post.title)}</h3>
             <p class="post-card__excerpt">${escapeHtml(post.excerpt || "")}</p>
             <button class="btn btn--ghost post-card__btn" type="button" data-post-id="${escapeHtml(post.id)}">
@@ -329,6 +392,7 @@
     initMobileNav();
     initMobileDock();
     initPosts();
+    initCookieBanner();
   }
 
   if (document.readyState === "loading") {

@@ -1,13 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-  <!-- Sfondo verde salvia del brand -->
   <rect width="64" height="64" rx="14" fill="#6b8f71" />
-  <!-- Monogramma SF (forme geometriche, leggibile a 16px) -->
+  <!-- S -->
   <path
-    fill="#faf8f5"
-    d="M14 20.5c0-1.4 1.1-2.5 2.5-2.5H28c1.1 0 2 .9 2 2s-.9 2-2 2h-9.5v5.2H26c1.1 0 2 .9 2 2s-.9 2-2 2h-7.5V41c0 1.1-.9 2-2 2s-2-.9-2-2V20.5z"
+    fill="none"
+    stroke="#faf8f5"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    d="M28 22c-1.2-2.2-3.4-3.5-6.2-3.5-4 0-6.8 2.4-6.8 5.6 0 3.2 2.2 4.6 6.2 5.6 4 1 6.8 2.4 6.8 6.2 0 3.8-3.2 6.6-7.6 6.6-3.2 0-5.8-1.4-7.2-3.8"
   />
+  <!-- F -->
   <path
-    fill="#faf8f5"
-    d="M34 18c-1.1 0-2 .9-2 2v21c0 1.1.9 2 2 2h12.5c1.1 0 2-.9 2-2s-.9-2-2-2H36V33.5h8.5c1.1 0 2-.9 2-2s-.9-2-2-2H36V22h10.5c1.1 0 2-.9 2-2s-.9-2-2-2H34z"
+    fill="none"
+    stroke="#faf8f5"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    d="M38 44V18.5h16M38 31.5h12"
   />
 </svg>

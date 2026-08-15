@@ -16,7 +16,6 @@ window.SITE_CONFIG = {
     footer: ".site-footer",
     prenotaLinks: 'a[href="#prenota"]',
     postsList: "#posts-list",
-    postDialog: "#post-dialog",
     cookieBanner: "#cookie-banner",
     cookiePanel: "#cookie-panel",
     cookiePreferences: "#cookie-preferences",

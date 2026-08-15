@@ -985,6 +985,51 @@ body:has(.legal-page) .site-footer {
   gap: 10px;
 }
 
+.article-kicker {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.article-kicker a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.article-kicker a:hover {
+  color: var(--text);
+}
+
+.article-subtitle {
+  margin: 0 0 28px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.article-body h2 {
+  margin: 28px 0 10px;
+  font-size: 1.15rem;
+}
+
+.article-body p {
+  margin: 0 0 14px;
+}
+
+.article-sources {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--stroke);
+}
+
+.article-sources ol {
+  padding-left: 1.2em;
+  margin: 0;
+}
+
+.article-sources li {
+  margin-bottom: 8px;
+}
+
 /* ==========================================================================
    FAQ
    ========================================================================== */

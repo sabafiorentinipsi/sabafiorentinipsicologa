@@ -236,138 +236,18 @@
   }
 
   /**
-   * Converte i paragrafi del JSON in HTML.
-   * Le stringhe che iniziano con "## " diventano sottotitoli.
-   */
-  function renderContentBlocks(blocks) {
-    return (blocks || [])
-      .map((block) => {
-        const text = String(block).trim();
-        if (!text) return "";
-        if (text.startsWith("## ")) {
-          return `<h3>${escapeHtml(text.slice(3))}</h3>`;
-        }
-        return `<p>${escapeHtml(text)}</p>`;
-      })
-      .join("");
-  }
-
-  /**
-   * Carica i post da data/posts.json e gestisce apertura/chiusura articolo.
-   * Per aggiungere un post: modifica solo il file JSON.
+   * Carica l'elenco post da data/posts.json e linka alle pagine HTML dedicate.
+   * Redirect compatibilità: #post/id → id.html
    */
   function initPosts() {
     const listElement = document.querySelector(CONFIG.selectors.postsList);
-    const dialog = document.querySelector(CONFIG.selectors.postDialog);
-    if (!listElement || !dialog) return;
+    if (!listElement) return;
 
-    const dialogTitle = dialog.querySelector("[data-post-title]");
-    const dialogSubtitle = dialog.querySelector("[data-post-subtitle]");
-    const dialogBody = dialog.querySelector("[data-post-body]");
-    const dialogSources = dialog.querySelector("[data-post-sources]");
-    const closeButtons = dialog.querySelectorAll("[data-post-close]");
-
-    let posts = [];
-
-    const closePost = () => {
-      dialog.classList.remove("is-open");
-      dialog.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("post-open");
-      if (window.location.hash.startsWith("#post/")) {
-        history.replaceState(null, "", "#approfondimenti");
-      }
-    };
-
-    const openPost = (postId) => {
-      const post = posts.find((item) => item.id === postId);
-      if (!post) return;
-
-      dialogTitle.textContent = post.title;
-      dialogSubtitle.textContent = post.subtitle || "";
-      dialogSubtitle.hidden = !post.subtitle;
-      dialogBody.innerHTML = renderContentBlocks(post.content);
-
-      if (post.sources && post.sources.length) {
-        dialogSources.innerHTML = `
-          <h4>Riferimenti bibliografici</h4>
-          <ol class="post-sources-list">
-            ${post.sources
-              .map((source, index) => `<li id="source-${index + 1}">${escapeHtml(source)}</li>`)
-              .join("")}
-          </ol>
-        `;
-        dialogSources.hidden = false;
-      } else {
-        dialogSources.innerHTML = "";
-        dialogSources.hidden = true;
-      }
-
-      dialog.classList.add("is-open");
-      dialog.setAttribute("aria-hidden", "false");
-      document.body.classList.add("post-open");
-
-      const expectedHash = `#post/${post.id}`;
-      if (window.location.hash !== expectedHash) {
-        history.replaceState(null, "", expectedHash);
-      }
-    };
-
-    const renderList = () => {
-      if (!posts.length) {
-        listElement.innerHTML =
-          '<p class="posts-empty">Presto verranno pubblicati nuovi approfondimenti.</p>';
-        return;
-      }
-
-      listElement.innerHTML = posts
-        .map(
-          (post) => `
-          <article class="post-card">
-            <h3 class="post-card__title">${escapeHtml(post.title)}</h3>
-            <p class="post-card__excerpt">${escapeHtml(post.excerpt || "")}</p>
-            <button class="btn btn--ghost post-card__btn" type="button" data-post-id="${escapeHtml(post.id)}">
-              Leggi l'articolo
-            </button>
-          </article>
-        `
-        )
-        .join("");
-    };
-
-    const openFromHash = () => {
-      const match = window.location.hash.match(/^#post\/(.+)$/);
-      if (match) openPost(decodeURIComponent(match[1]));
-    };
-
-    listElement.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-post-id]");
-      if (!button) return;
-      openPost(button.getAttribute("data-post-id"));
-    });
-
-    closeButtons.forEach((button) => {
-      button.addEventListener("click", closePost);
-    });
-
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) closePost();
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && dialog.classList.contains("is-open")) {
-        closePost();
-      }
-    });
-
-    window.addEventListener("hashchange", () => {
-      if (window.location.hash.startsWith("#post/")) {
-        openFromHash();
-      } else if (dialog.classList.contains("is-open")) {
-        dialog.classList.remove("is-open");
-        dialog.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("post-open");
-      }
-    });
+    const hashMatch = window.location.hash.match(/^#post\/(.+)$/);
+    if (hashMatch) {
+      window.location.replace(`./${encodeURIComponent(decodeURIComponent(hashMatch[1]))}.html`);
+      return;
+    }
 
     fetch(CONFIG.postsUrl)
       .then((response) => {
@@ -375,9 +255,26 @@
         return response.json();
       })
       .then((data) => {
-        posts = Array.isArray(data.posts) ? data.posts : [];
-        renderList();
-        openFromHash();
+        const posts = Array.isArray(data.posts) ? data.posts : [];
+        if (!posts.length) {
+          listElement.innerHTML =
+            '<p class="posts-empty">Presto verranno pubblicati nuovi approfondimenti.</p>';
+          return;
+        }
+
+        listElement.innerHTML = posts
+          .map(
+            (post) => `
+          <article class="post-card">
+            <h3 class="post-card__title">${escapeHtml(post.title)}</h3>
+            <p class="post-card__excerpt">${escapeHtml(post.excerpt || "")}</p>
+            <a class="btn btn--ghost post-card__btn" href="./${escapeHtml(post.id)}.html">
+              Leggi l'articolo
+            </a>
+          </article>
+        `
+          )
+          .join("");
       })
       .catch(() => {
         listElement.innerHTML =

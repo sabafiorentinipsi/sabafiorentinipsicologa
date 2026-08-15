@@ -39,10 +39,44 @@ function renderSources(sources) {
 
 for (const post of data.posts) {
   const url = `https://www.sabafiorentinipsicologa.it/${post.id}.html`;
+  const imageAbs = post.image
+    ? `https://www.sabafiorentinipsicologa.it/${String(post.image).replace(/^\.\//, "")}`
+    : "";
   const keywords = (post.keywords || []).join(", ");
   const subtitle = post.subtitle
     ? `<p class="article-subtitle">${esc(post.subtitle)}</p>`
     : "";
+  const cover = post.image
+    ? `<img class="article-cover" src="${esc(post.image)}" alt="" width="1200" height="900" />`
+    : "";
+  const ogImage = imageAbs
+    ? `    <meta property="og:image" content="${esc(imageAbs)}" />\n`
+    : "";
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt || "",
+    datePublished: post.date || "2026-07-14",
+    dateModified: "2026-08-15",
+    inLanguage: "it-IT",
+    author: {
+      "@type": "Person",
+      name: "Saba Fiorentini",
+      url: "https://www.sabafiorentinipsicologa.it/",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Saba Fiorentini",
+      url: "https://www.sabafiorentinipsicologa.it/",
+    },
+    mainEntityOfPage: url,
+    keywords: (post.keywords || []).join(", "),
+  };
+  if (imageAbs) {
+    schema.image = [imageAbs];
+  }
 
   const html = `<!doctype html>
 <html lang="it">
@@ -59,7 +93,7 @@ for (const post of data.posts) {
     <meta property="og:title" content="${esc(post.title)}" />
     <meta property="og:description" content="${esc(post.excerpt || "")}" />
     <meta property="og:url" content="${url}" />
-    <meta property="og:locale" content="it_IT" />
+${ogImage}    <meta property="og:locale" content="it_IT" />
     <meta property="og:site_name" content="Saba Fiorentini — Psicologa" />
     <link rel="icon" href="./assets/favicon.png?v=6" type="image/png" sizes="192x192" />
     <link rel="icon" href="./assets/favicon.svg?v=6" type="image/svg+xml" />
@@ -95,6 +129,7 @@ for (const post of data.posts) {
         <p class="article-kicker"><a href="./index.html#approfondimenti">Approfondimenti</a></p>
         <h1>${esc(post.title)}</h1>
         ${subtitle}
+        ${cover}
         <div class="article-body">
 ${renderContent(post.content)}
         </div>
@@ -119,31 +154,7 @@ ${renderContent(post.content)}
     <script src="./js/config.js" defer></script>
     <script src="./js/main.js" defer></script>
     <script type="application/ld+json">
-      ${JSON.stringify(
-        {
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: post.title,
-          description: post.excerpt || "",
-          datePublished: post.date || "2026-07-14",
-          dateModified: "2026-08-15",
-          inLanguage: "it-IT",
-          author: {
-            "@type": "Person",
-            name: "Saba Fiorentini",
-            url: "https://www.sabafiorentinipsicologa.it/",
-          },
-          publisher: {
-            "@type": "Person",
-            name: "Saba Fiorentini",
-            url: "https://www.sabafiorentinipsicologa.it/",
-          },
-          mainEntityOfPage: url,
-          keywords: (post.keywords || []).join(", "),
-        },
-        null,
-        2
-      )}
+      ${JSON.stringify(schema, null, 2)}
     </script>
   </body>
 </html>

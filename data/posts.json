@@ -3,9 +3,11 @@
     {
       "id": "autostima",
       "title": "L'illusione dell'autostima perfetta: un viaggio tra realtà e idealizzazione",
+      "cardTitle": "Autostima",
       "subtitle": "Il viaggio verso un’autostima autentica: tra aspettative sociali e accettazione di Sé",
       "date": "2026-07-14",
       "excerpt": "L'autostima non è un generico \"stare bene con sé stessi\": è la valutazione profonda del proprio valore personale, e una pietra angolare della salute mentale.",
+      "image": "./assets/posts/autostima.jpg",
       "keywords": ["autostima", "sé ideale", "perfezionismo", "psicologa Cremona", "sostegno psicologico online"],
       "content": [
         "L'autostima non corrisponde a un generico \"stare bene con sé stessi\", ma rappresenta la valutazione globale, profonda e soggettiva che una persona attribuisce al proprio valore personale ed è considerata una pietra angolare della salute mentale (Orth & Robins, 2014). Nel corso degli anni, la ricerca scientifica ha dimostrato che questa percezione non è un tratto immutabile, bensì un processo dinamico alimentato dal dialogo continuo tra chi siamo, chi vorremmo essere e il mondo che ci circonda (Leary & Baumeister, 2000; Harris & Orth, 2020).",
@@ -33,9 +35,11 @@
     {
       "id": "confini-relazionali",
       "title": "L'arte di dire no: perché mettere confini sani protegge le tue relazioni",
+      "cardTitle": "Confini relazionali",
       "subtitle": "L’arte di proteggere lo spazio interiore: confini relazionali e comunicazione assertiva",
       "date": "2026-07-14",
       "excerpt": "Tra il timore di ferire dicendo di no e il rischio di esplodere di rabbia c’è un equilibrio possibile: i confini relazionali sani e l’assertività.",
+      "image": "./assets/posts/confini-relazionali.jpg",
       "keywords": ["confini relazionali", "assertività", "dire di no", "relazioni", "psicologa online"],
       "content": [
         "Nelle nostre relazioni quotidiane, siano esse affettive, familiari o professionali, spesso ci troviamo a oscillare tra due estremi: il timore di ferire l’altro dicendo di \"no\" e il rischio di esplodere in reazioni rabbiose quando sentiamo che le nostre esigenze sono state calpestate. La ricerca in psicologia dimostra che l'equilibrio interpersonale non risiede nel compiacimento costante né nel conflitto aperto, ma nella capacità di tracciare confini relazionali sani attraverso la comunicazione assertiva (Speed, Goldstein & Goldfried, 2018).",
@@ -66,9 +70,11 @@
     {
       "id": "confronto-social",
       "title": "Il confronto con gli altri nell’era dei social network",
+      "cardTitle": "Confronto sui social",
       "subtitle": "Social media, autostima e benessere emotivo",
       "date": "2026-07-14",
       "excerpt": "I social possono diventare uno specchio distorcente: il confronto continuo con vite filtrate alimenta insicurezze e intacca il benessere emotivo.",
+      "image": "./assets/posts/confronto-social.jpg",
       "keywords": ["confronto sociale", "social network", "FOMO", "autostima", "immagine corporea"],
       "content": [
         "Aprire i social network e osservare immagini di vacanze perfette, carriere fulminee e relazioni idilliache è ormai un gesto automatico delle nostre giornate. Sebbene i social siano nati per connetterci, la ricerca scientifica dimostra che spesso si trasformano in uno specchio distorcente. Il costante confronto con le vite degli altri online sta modificando radicalmente il modo in cui valutiamo noi stessi, alimentando insicurezze profonde e intaccando il benessere emotivo quotidiano (Vogel et al., 2014).",
@@ -94,9 +100,11 @@
     {
       "id": "voler-piacere-a-tutti",
       "title": "Liberarsi dal permesso degli altri: la trappola del voler piacere a tutti",
+      "cardTitle": "Voler piacere a tutti",
       "subtitle": "Approvazione sociale, locus of control e benessere psicologico",
       "date": "2026-07-14",
       "excerpt": "Desiderare l'approvazione altrui è umano. Quando diventa un bisogno assoluto, però, rischia di diventare una prigione invisibile.",
+      "image": "./assets/posts/voler-piacere-a-tutti.jpg",
       "keywords": ["approvazione sociale", "locus of control", "compiacenza", "ansia sociale", "autenticità"],
       "content": [
         "Desiderare l'approvazione altrui è un tratto profondamente umano ed evolutivo. Tuttavia, quando questo desiderio si trasforma in un bisogno assoluto e totalizzante, rischia di diventare una prigione invisibile. La ricerca scientifica dimostra che la dipendenza dall'approvazione e la costante paura del giudizio erodono silenziosamente il nostro benessere psicologico, spingendoci a vivere una vita scritta da altri (Leary & Baumeister, 2000; Harris & Orth, 2020).",

@@ -15,16 +15,12 @@ window.SITE_CONFIG = {
     prenotaSection: "#prenota",
     footer: ".site-footer",
     prenotaLinks: 'a[href="#prenota"]',
-    postsList: "#posts-list",
     cookieBanner: "#cookie-banner",
     cookiePanel: "#cookie-panel",
     cookiePreferences: "#cookie-preferences",
     contactForm: "#contact-form",
     formStatus: "#form-status",
   },
-
-  /** Percorso del file JSON dei post (modificabile senza DB). */
-  postsUrl: "./data/posts.json",
 
   /** Endpoint AJAX FormSubmit e pagina di conferma. */
   formSubmitAjaxUrl: "https://formsubmit.co/ajax/sabafiorentini.psi@gmail.com",

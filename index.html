@@ -212,30 +212,45 @@
           </div>
 
           <div class="grid grid--three">
-            <div class="card card--icon">
-              <div class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-              </div>
+            <div class="card card--photo">
+              <img
+                class="card__image"
+                src="./assets/offerta/consapevolezza.jpg"
+                alt=""
+                width="600"
+                height="450"
+                loading="lazy"
+              />
               <h3>Consapevolezza</h3>
               <p>
                 Dare significato a ciò che stai vivendo e riconoscere cosa ti
                 sta mettendo in difficoltà.
               </p>
             </div>
-            <div class="card card--icon">
-              <div class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
+            <div class="card card--photo">
+              <img
+                class="card__image"
+                src="./assets/offerta/risorse.jpg"
+                alt=""
+                width="600"
+                height="450"
+                loading="lazy"
+              />
               <h3>Risorse personali</h3>
               <p>
                 Individuare e potenziare le tue risorse per affrontare una fase
                 complessa o una situazione di sofferenza.
               </p>
             </div>
-            <div class="card card--icon">
-              <div class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
-              </div>
+            <div class="card card--photo">
+              <img
+                class="card__image"
+                src="./assets/offerta/benessere.jpg"
+                alt=""
+                width="600"
+                height="450"
+                loading="lazy"
+              />
               <h3>Benessere</h3>
               <p>
                 Lavorare in un’ottica di miglioramento della qualità della vita
@@ -334,7 +349,7 @@
         </div>
       </section>
 
-      <!-- Approfondimenti: contenuti caricati da data/posts.json -->
+      <!-- Approfondimenti: card statiche (foto + titolo) -->
       <section class="section section--alt" id="approfondimenti">
         <div class="container">
           <div class="section-head">
@@ -344,36 +359,67 @@
               riferimenti alla ricerca scientifica.
             </p>
           </div>
-          <div class="posts-grid" id="posts-list" aria-live="polite">
-            <p class="posts-empty">Caricamento articoli…</p>
+          <div class="posts-grid" id="posts-list">
+            <a class="post-card" href="./autostima.html">
+              <img
+                class="post-card__image"
+                src="./assets/posts/autostima.jpg"
+                alt=""
+                width="600"
+                height="450"
+                loading="lazy"
+              />
+              <h3 class="post-card__title">
+                L'illusione dell'autostima perfetta: un viaggio tra realtà e
+                idealizzazione
+              </h3>
+              <span class="btn btn--ghost post-card__btn">Leggi l'articolo</span>
+            </a>
+            <a class="post-card" href="./confini-relazionali.html">
+              <img
+                class="post-card__image"
+                src="./assets/posts/confini-relazionali.jpg"
+                alt=""
+                width="600"
+                height="450"
+                loading="lazy"
+              />
+              <h3 class="post-card__title">
+                L'arte di dire no: perché mettere confini sani protegge le tue
+                relazioni
+              </h3>
+              <span class="btn btn--ghost post-card__btn">Leggi l'articolo</span>
+            </a>
+            <a class="post-card" href="./confronto-social.html">
+              <img
+                class="post-card__image"
+                src="./assets/posts/confronto-social.jpg"
+                alt=""
+                width="600"
+                height="450"
+                loading="lazy"
+              />
+              <h3 class="post-card__title">
+                Il confronto con gli altri nell’era dei social network
+              </h3>
+              <span class="btn btn--ghost post-card__btn">Leggi l'articolo</span>
+            </a>
+            <a class="post-card" href="./voler-piacere-a-tutti.html">
+              <img
+                class="post-card__image"
+                src="./assets/posts/voler-piacere-a-tutti.jpg"
+                alt=""
+                width="600"
+                height="450"
+                loading="lazy"
+              />
+              <h3 class="post-card__title">
+                Liberarsi dal permesso degli altri: la trappola del voler
+                piacere a tutti
+              </h3>
+              <span class="btn btn--ghost post-card__btn">Leggi l'articolo</span>
+            </a>
           </div>
-          <noscript>
-            <ul class="posts-seo-list">
-              <li>
-                <a href="./autostima.html"
-                  >L'illusione dell'autostima perfetta: un viaggio tra realtà e
-                  idealizzazione</a
-                >
-              </li>
-              <li>
-                <a href="./confini-relazionali.html"
-                  >L'arte di dire no: perché mettere confini sani protegge le tue
-                  relazioni</a
-                >
-              </li>
-              <li>
-                <a href="./confronto-social.html"
-                  >Il confronto con gli altri nell’era dei social network</a
-                >
-              </li>
-              <li>
-                <a href="./voler-piacere-a-tutti.html"
-                  >Liberarsi dal permesso degli altri: la trappola del voler
-                  piacere a tutti</a
-                >
-              </li>
-            </ul>
-          </noscript>
         </div>
       </section>
 

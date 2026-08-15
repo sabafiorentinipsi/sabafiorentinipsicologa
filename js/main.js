@@ -224,62 +224,13 @@
   }
 
   /**
-   * Escape HTML per evitare injection quando si renderizzano i post dal JSON.
-   */
-  function escapeHtml(value) {
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;");
-  }
-
-  /**
-   * Carica l'elenco post da data/posts.json e linka alle pagine HTML dedicate.
-   * Redirect compatibilità: #post/id → id.html
+   * Redirect compatibilità vecchi link: #post/id → id.html
    */
   function initPosts() {
-    const listElement = document.querySelector(CONFIG.selectors.postsList);
-    if (!listElement) return;
-
     const hashMatch = window.location.hash.match(/^#post\/(.+)$/);
     if (hashMatch) {
       window.location.replace(`./${encodeURIComponent(decodeURIComponent(hashMatch[1]))}.html`);
-      return;
     }
-
-    fetch(CONFIG.postsUrl)
-      .then((response) => {
-        if (!response.ok) throw new Error("Impossibile caricare i post");
-        return response.json();
-      })
-      .then((data) => {
-        const posts = Array.isArray(data.posts) ? data.posts : [];
-        if (!posts.length) {
-          listElement.innerHTML =
-            '<p class="posts-empty">Presto verranno pubblicati nuovi approfondimenti.</p>';
-          return;
-        }
-
-        listElement.innerHTML = posts
-          .map(
-            (post) => `
-          <article class="post-card">
-            <h3 class="post-card__title">${escapeHtml(post.title)}</h3>
-            <p class="post-card__excerpt">${escapeHtml(post.excerpt || "")}</p>
-            <a class="btn btn--ghost post-card__btn" href="./${escapeHtml(post.id)}.html">
-              Leggi l'articolo
-            </a>
-          </article>
-        `
-          )
-          .join("");
-      })
-      .catch(() => {
-        listElement.innerHTML =
-          '<p class="posts-empty">I contenuti non sono al momento disponibili.</p>';
-      });
   }
 
   /**

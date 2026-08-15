@@ -931,11 +931,21 @@ textarea:focus {
 }
 
 /* ==========================================================================
-   Privacy Policy e pagine legali
+   Privacy Policy, FAQ e pagine documentali (niente scroll-snap)
    ========================================================================== */
-.legal-page {
+html:has(.legal-page) {
+  scroll-snap-type: none;
+}
+
+.legal-page.section {
   justify-content: flex-start;
   min-height: auto;
+  overflow: visible;
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+}
+
+body:has(.legal-page) .site-footer {
   scroll-snap-align: none;
 }
 

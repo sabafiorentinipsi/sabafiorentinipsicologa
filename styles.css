@@ -592,6 +592,16 @@ button.btn {
   margin-bottom: 0;
 }
 
+.session-info__more {
+  margin: 16px 0 0;
+  color: var(--muted);
+}
+
+.session-info__more a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 .cta {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -960,6 +970,57 @@ textarea:focus {
 
 .legal-page__back {
   margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+.faq-list {
+  display: grid;
+  gap: 10px;
+}
+
+.faq-item {
+  border: 1px solid var(--stroke);
+  background: #ffffff;
+  border-radius: var(--radius-sm);
+  padding: 0 16px;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 16px 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  float: right;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.faq-item[open] summary::after {
+  content: "–";
+}
+
+.faq-item p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.faq-item a {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /* ==========================================================================
